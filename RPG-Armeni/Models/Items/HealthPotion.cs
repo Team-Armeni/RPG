@@ -18,6 +18,6 @@
             }
         }
 
-        private HealthPotionSize HealthPotionSize { get; set; }
+        public HealthPotionSize HealthPotionSize { get; set; }
     }
 }

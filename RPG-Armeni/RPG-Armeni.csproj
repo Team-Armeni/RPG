@@ -51,6 +51,7 @@
     <Compile Include="Interfaces\IGameObject.cs" />
     <Compile Include="Interfaces\IInventory.cs" />
     <Compile Include="Interfaces\IItemSlot.cs" />
+    <Compile Include="Interfaces\IPosition.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Models\Characters\Character.cs" />
     <Compile Include="Models\Characters\Fairy.cs" />

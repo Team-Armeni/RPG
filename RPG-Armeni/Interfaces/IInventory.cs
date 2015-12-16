@@ -1,28 +1,21 @@
-﻿using Game.GameObjects.Inventory;
-using Game.GameObjects.Inventory.ItemSlots.ArmorItemSlots;
-using Game.GameObjects.Inventory.ItemSlots.WeaponItemSlots;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Game.Interfaces
+﻿namespace RPGArmeni.Interfaces
 {
+    using System;
+
     public interface IInventory
     {
-        MainHandSlot MainHandSlot { get; }
+        ICommonSlot MainHandSlot { get; }
 
-        OffHandSlot OffHandSlot { get; }
+        ICommonSlot OffHandSlot { get; }
 
-        ChestArmorSlot ChestSlot { get; }
+        ICommonSlot ChestSlot { get; }
 
-        HeadArmorSlot HeadSlot { get; }
+        ICommonSlot HeadSlot { get; }
 
-        FeetArmorSlot FeetSlot { get;}
+        ICommonSlot FeetSlot { get; }
 
-        HandArmorSlot HandSlot { get; }
+        ICommonSlot HandSlot { get; }
 
-        Backpack BackPack { get; }
+        ICommonSlot BackPack { get; }
     }
 }

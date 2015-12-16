@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RPGArmeni.Interfaces
+﻿namespace RPGArmeni.Interfaces
 {
+    using System;
+
     public interface IArmor
     {
+        int DefencePoints { get; set; }
     }
 }

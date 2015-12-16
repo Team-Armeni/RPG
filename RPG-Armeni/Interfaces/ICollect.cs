@@ -1,12 +1,12 @@
 ﻿namespace RPGArmeni.Interfaces
 {
+    using System;
     using System.Collections.Generic;
-    using Items;
 
     public interface ICollect
     {
-        IEnumerable<Item> Inventory { get; }
+        IEnumerable<IGameItem> Inventory { get; }
 
-        void AddItemToInventory(Item item);
+        void AddItemToInventory(IGameItem item);
     }
 }
