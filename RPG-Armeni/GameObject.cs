@@ -3,10 +3,11 @@
     using System;
     using Engine;
     using Exceptions;
+    using RPGArmeni.Interfaces;
 
-    public abstract class GameObject
+    public abstract class GameObject : IGameObject
     {
-        private Position position;
+        private IPosition position;
         private char objectSymbol;
 
         protected GameObject(Position position, char objectSymbol)
@@ -15,7 +16,7 @@
             this.ObjectSymbol = objectSymbol;
         }
 
-        public Position Position
+        public IPosition Position
         {
             get
             {
@@ -50,7 +51,7 @@
             }
         }
 
-        private bool IsOutsideGameField(Position value)
+        private bool IsOutsideGameField(IPosition value)
         {
             bool isOutside = value.X < 0
                     || value.Y < 0
