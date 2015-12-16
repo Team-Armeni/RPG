@@ -7,8 +7,8 @@
     <ProjectGuid>{15E08928-D995-4869-B403-A54C9D55B7DB}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SuperRpgGame</RootNamespace>
-    <AssemblyName>SuperRpgGame</AssemblyName>
+    <RootNamespace>RPGArmeni</RootNamespace>
+    <AssemblyName>RPGArmeni</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,15 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\EnemyAttribute.cs" />
-    <Compile Include="Characters\Character.cs" />
-    <Compile Include="Characters\Fairy.cs" />
-    <Compile Include="Characters\Ninja.cs" />
-    <Compile Include="Characters\Ork.cs" />
-    <Compile Include="Characters\Player.cs" />
-    <Compile Include="Characters\PlayerRace.cs" />
-    <Compile Include="Characters\Troll.cs" />
+    <Compile Include="Models\Characters\Character.cs" />
+    <Compile Include="Models\Characters\Fairy.cs" />
+    <Compile Include="Models\Characters\Ninja.cs" />
+    <Compile Include="Models\Characters\Orc.cs" />
+    <Compile Include="Models\Characters\Player.cs" />
+    <Compile Include="Models\Characters\PlayerRace.cs" />
+    <Compile Include="Models\Characters\Troll.cs" />
     <Compile Include="Engine\SuperEngine.cs" />
-    <Compile Include="Exceptions\NotEnoughBeerException.cs" />
     <Compile Include="Exceptions\ObjectOutOfBoundsException.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Interfaces\IAttack.cs" />
@@ -62,10 +61,10 @@
     <Compile Include="Interfaces\IMoveable.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IRenderer.cs" />
-    <Compile Include="Items\Beer.cs" />
-    <Compile Include="Items\BeerSize.cs" />
-    <Compile Include="Items\Item.cs" />
-    <Compile Include="Items\ItemState.cs" />
+    <Compile Include="Models\Items\HealthPotion.cs" />
+    <Compile Include="Models\Items\HealthPotionSize.cs" />
+    <Compile Include="Models\Items\Item.cs" />
+    <Compile Include="Models\Items\ItemState.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="RpgApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

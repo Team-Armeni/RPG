@@ -1,4 +1,4 @@
-﻿namespace SuperRpgGame.Interfaces
+﻿namespace RPGArmeni.Interfaces
 {
     public interface IRenderer
     {

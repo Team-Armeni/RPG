@@ -1,4 +1,4 @@
-﻿namespace SuperRpgGame.Items
+﻿namespace RPGArmeni.Items
 {
     public enum ItemState
     {

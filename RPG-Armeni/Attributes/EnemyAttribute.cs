@@ -1,4 +1,4 @@
-﻿namespace SuperRpgGame.Attributes
+﻿namespace RPGArmeni.Attributes
 {
     using System;
 

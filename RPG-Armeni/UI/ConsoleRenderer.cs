@@ -1,4 +1,4 @@
-﻿namespace SuperRpgGame.UI
+﻿namespace RPGArmeni.UI
 {
     using System;
     using Interfaces;

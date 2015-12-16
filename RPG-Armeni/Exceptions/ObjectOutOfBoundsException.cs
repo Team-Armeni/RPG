@@ -1,4 +1,4 @@
-﻿namespace SuperRpgGame.Exceptions
+﻿namespace RPGArmeni.Exceptions
 {
     using System;
 

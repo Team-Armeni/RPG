@@ -1,4 +1,4 @@
-﻿namespace SuperRpgGame
+﻿namespace RPGArmeni
 {
     public struct Position
     {

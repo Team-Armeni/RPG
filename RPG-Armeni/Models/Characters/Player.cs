@@ -1,4 +1,4 @@
-﻿namespace SuperRpgGame.Characters
+﻿namespace RPGArmeni.Models.Characters
 {
     using System;
     using System.Collections.Generic;
@@ -57,7 +57,7 @@
 
         public void Heal()
         {
-            var beer = this.inventory.FirstOrDefault() as Beer;
+            var beer = this.inventory.FirstOrDefault() as HealthPotion;
 
             if (beer == null)
             {

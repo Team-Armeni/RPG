@@ -1,4 +1,4 @@
-﻿namespace SuperRpgGame.Engine
+﻿namespace RPGArmeni.Engine
 {
     using System;
     using System.Collections.Generic;
@@ -7,7 +7,7 @@
     using System.Reflection;
     using System.Text;
     using Attributes;
-    using Characters;
+    using RPGArmeni.Models.Characters;
     using Exceptions;
     using Interfaces;
     using Items;
@@ -74,10 +74,6 @@
                     this.ExecuteCommand(command);
                 }
                 catch (ObjectOutOfBoundsException ex)
-                {
-                    this.renderer.WriteLine(ex.Message);
-                }
-                catch (NotEnoughBeerException ex)
                 {
                     this.renderer.WriteLine(ex.Message);
                 }
@@ -316,24 +312,24 @@
 
             int beerType = Rand.Next(0, 3);
 
-            BeerSize beerSize;
+            HealthPotionSize beerSize;
 
             switch (beerType)
             {
                 case 0:
-                    beerSize = BeerSize.Small;
+                    beerSize = HealthPotionSize.Minor;
                     break;
                 case 1:
-                    beerSize = BeerSize.Medium;
+                    beerSize = HealthPotionSize.Normal;
                     break;
                 case 2:
-                    beerSize = BeerSize.Large;
+                    beerSize = HealthPotionSize.Major;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("beerType", "Invalid beer type.");
             }
 
-            return new Beer(new Position(currentX, currentY), beerSize);
+            return new HealthPotion(new Position(currentX, currentY), beerSize);
         }
 
         private void PopulateEnemies()

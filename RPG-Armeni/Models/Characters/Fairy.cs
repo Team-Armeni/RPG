@@ -1,4 +1,4 @@
-﻿namespace SuperRpgGame.Characters
+﻿namespace RPGArmeni.Models.Characters
 {
     using Attributes;
 
