@@ -7,7 +7,7 @@
     {
         int NumberOfSlots { get; }
 
-        IEnumerable<ICommonSlot> Slots { get; }
+        IEnumerable<ISlot> Slots { get; }
 
         void AddItem(IGameItem itemToBeAdded);
 

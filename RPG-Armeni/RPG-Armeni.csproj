@@ -42,17 +42,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\EnemyAttribute.cs" />
+    <Compile Include="Engine\Commands\CreateCharacterCommand.cs" />
+    <Compile Include="Engine\Commands\CreateItemCommand.cs" />
+    <Compile Include="Engine\Commands\GameCommand.cs" />
+    <Compile Include="Engine\Factories\CharacterFactory.cs" />
     <Compile Include="Engine\Factories\ItemFactory.cs" />
     <Compile Include="Engine\Factories\RandomGenerator.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
-    <Compile Include="Interfaces\ICommonSlot.cs" />
+    <Compile Include="Interfaces\ISlot.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
     <Compile Include="Interfaces\IGameCommand.cs" />
     <Compile Include="Interfaces\IGameEngine.cs" />
     <Compile Include="Interfaces\IGameItem.cs" />
     <Compile Include="Interfaces\IGameObject.cs" />
     <Compile Include="Interfaces\IInventory.cs" />
-    <Compile Include="Interfaces\IItemSlot.cs" />
     <Compile Include="Interfaces\IPosition.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Models\Characters\Character.cs" />
@@ -74,6 +77,8 @@
     <Compile Include="Interfaces\IMoveable.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IRenderer.cs" />
+    <Compile Include="Models\Containers\Inventory.cs" />
+    <Compile Include="Models\Containers\Slot.cs" />
     <Compile Include="Models\Items\HealthPotion.cs" />
     <Compile Include="Models\Items\HealthPotionSize.cs" />
     <Compile Include="Models\Items\Item.cs" />

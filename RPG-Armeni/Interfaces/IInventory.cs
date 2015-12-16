@@ -4,18 +4,18 @@
 
     public interface IInventory
     {
-        ICommonSlot MainHandSlot { get; }
+        IItemSlot MainHandSlot { get; }
 
-        ICommonSlot OffHandSlot { get; }
+        IItemSlot OffHandSlot { get; }
 
-        ICommonSlot ChestSlot { get; }
+        IItemSlot ChestSlot { get; }
 
-        ICommonSlot HeadSlot { get; }
+        IItemSlot HeadSlot { get; }
 
-        ICommonSlot FeetSlot { get; }
+        IItemSlot FeetSlot { get; }
 
-        ICommonSlot HandSlot { get; }
+        IItemSlot GlovesSlot { get; }
 
-        ICommonSlot BackPack { get; }
+        IContainer BackPack { get; }
     }
 }
