@@ -11,7 +11,7 @@
             IRenderer renderer = new ConsoleRenderer();
             IInputReader reader = new ConsoleInputReader();
 
-            SuperEngine engine = new SuperEngine(reader, renderer);
+            GameEngine engine = new GameEngine(reader, renderer);
 
             engine.Run();
         }

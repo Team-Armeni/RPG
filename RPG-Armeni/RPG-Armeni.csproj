@@ -42,6 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\EnemyAttribute.cs" />
+    <Compile Include="Interfaces\IArmor.cs" />
+    <Compile Include="Interfaces\ICommonSlot.cs" />
+    <Compile Include="Interfaces\IContainer.cs" />
+    <Compile Include="Interfaces\IGameCommand.cs" />
+    <Compile Include="Interfaces\IGameEngine.cs" />
+    <Compile Include="Interfaces\IGameItem.cs" />
+    <Compile Include="Interfaces\IGameObject.cs" />
+    <Compile Include="Interfaces\IInventory.cs" />
+    <Compile Include="Interfaces\IItemSlot.cs" />
+    <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Models\Characters\Character.cs" />
     <Compile Include="Models\Characters\Fairy.cs" />
     <Compile Include="Models\Characters\Ninja.cs" />
@@ -49,7 +59,7 @@
     <Compile Include="Models\Characters\Player.cs" />
     <Compile Include="Models\Characters\PlayerRace.cs" />
     <Compile Include="Models\Characters\Troll.cs" />
-    <Compile Include="Engine\SuperEngine.cs" />
+    <Compile Include="Engine\GameEngine.cs" />
     <Compile Include="Exceptions\ObjectOutOfBoundsException.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Interfaces\IAttack.cs" />

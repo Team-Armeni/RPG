@@ -12,7 +12,7 @@
     using Interfaces;
     using Items;
 
-    public class SuperEngine
+    public class GameEngine
     {
         public const int MapWidth = 5;
         public const int MapHeight = 5;
@@ -43,7 +43,7 @@
         private readonly IList<GameObject> items;
         private IPlayer player;
 
-        public SuperEngine(IInputReader reader, IRenderer renderer)
+        public GameEngine(IInputReader reader, IRenderer renderer)
         {
             this.reader = reader;
             this.renderer = renderer;

@@ -1,23 +1,23 @@
-﻿namespace RPGArmeni.Items
+﻿namespace RPGArmeni.Models.Items
 {
     public class HealthPotion : Item
     {
         private const char HealthPotionSymbol = 'H';
 
-        public HealthPotion(Position position, HealthPotionSize beerSize)
+        public HealthPotion(Position position, HealthPotionSize healthPotionSize)
             : base(position, HealthPotionSymbol)
         {
-            this.BeerSize = beerSize;
+            this.HealthPotionSize = healthPotionSize;
         }
 
         public int HealthRestore
         {
             get
             {
-                return (int)this.BeerSize;
+                return (int)this.HealthPotionSize;
             }
         }
 
-        private HealthPotionSize BeerSize { get; set; }
+        private HealthPotionSize HealthPotionSize { get; set; }
     }
 }

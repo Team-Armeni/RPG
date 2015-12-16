@@ -21,14 +21,9 @@
             {
                 return this.position;
             }
-
             set
             {
-                // Added upper-bound check
-                if (value.X < 0 
-                    || value.Y < 0 
-                    || value.X >= SuperEngine.MapWidth 
-                    || value.Y >= SuperEngine.MapHeight)
+                if (this.IsOutsideGameField(value))
                 {
                     throw new ObjectOutOfBoundsException("Specified coordinates are outside map.");
                 }
@@ -48,13 +43,21 @@
             {
                 if (!char.IsUpper(value))
                 {
-                    throw new ArgumentOutOfRangeException(
-                        "objectSymbol", 
-                        "Object symbol must be an upper-case letter.");
+                    throw new ArgumentOutOfRangeException("Object symbol must be an upper-case letter.");
                 }
 
                 this.objectSymbol = value;
             }
+        }
+
+        private bool IsOutsideGameField(Position value)
+        {
+            bool isOutside = value.X < 0
+                    || value.Y < 0
+                    || value.X >= GameEngine.MapWidth
+                    || value.Y >= GameEngine.MapHeight;
+
+            return isOutside;
         }
     }
 }
