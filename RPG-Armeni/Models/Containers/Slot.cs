@@ -3,7 +3,7 @@
     using RPGArmeni.Interfaces;
     using System;
 
-    public abstract class Slot : ISlot
+    public class Slot : ISlot
     {
         private IGameItem gameItem;
         private bool isEmpty;

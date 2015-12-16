@@ -1,21 +1,31 @@
 ﻿namespace RPGArmeni.Interfaces
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
 
     public interface IInventory
     {
-        IItemSlot MainHandSlot { get; }
+        ISlot MainHandSlot { get; }
 
-        IItemSlot OffHandSlot { get; }
+        ISlot OffHandSlot { get; }
 
-        IItemSlot ChestSlot { get; }
+        ISlot ChestSlot { get; }
 
-        IItemSlot HeadSlot { get; }
+        ISlot HeadSlot { get; }
 
-        IItemSlot FeetSlot { get; }
+        ISlot FeetSlot { get; }
 
-        IItemSlot GlovesSlot { get; }
+        ISlot GlovesSlot { get; }
 
         IContainer BackPack { get; }
+
+        IEnumerable<ISlot> SlotList { get; }
+
+        void ClearInventory();
+
+        void EquipItem(IGameItem itemToBeEquipped);
+
+        void RemoveItem(IGameItem itemToBeRemoved);
     }
 }
