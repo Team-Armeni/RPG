@@ -22,6 +22,12 @@
 
         IEnumerable<ISlot> SlotList { get; }
 
+        IDictionary<int, ISlot> WeaponSlots { get; }
+
+        IDictionary<int, ISlot> ArmorSlots { get; }
+
+        IRenderer ConsoleRenderer { get; set; }
+
         void ClearInventory();
 
         void EquipItem(IGameItem itemToBeEquipped);

@@ -48,6 +48,7 @@
     <Compile Include="Engine\Factories\CharacterFactory.cs" />
     <Compile Include="Engine\Factories\ItemFactory.cs" />
     <Compile Include="Engine\Factories\RandomGenerator.cs" />
+    <Compile Include="Exceptions\NoSlotAvailableException.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
     <Compile Include="Interfaces\ISlot.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
