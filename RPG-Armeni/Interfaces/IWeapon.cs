@@ -4,6 +4,6 @@
 
     public interface IWeapon
     {
-        int AttackBonus { get; set; }
+        int AttackBonus { get; }
     }
 }

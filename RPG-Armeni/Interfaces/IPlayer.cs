@@ -2,7 +2,7 @@
 {
     using Models.Characters;
 
-    public interface IPlayer : ICharacter, IMoveable, ICollect, IHeal
+    public interface IPlayer : ICharacter, IMoveable, ICollect
     {
         PlayerRace Race { get; }
     }

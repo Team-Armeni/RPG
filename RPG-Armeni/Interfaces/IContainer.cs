@@ -9,7 +9,7 @@
 
         void LootItem(IGameItem itemToBeLooted);
 
-        void RemoveItem(IGameItem itemToBeRemoved);
+        void RemoveItem(ISlot slot);
 
         void ListItems();
     }

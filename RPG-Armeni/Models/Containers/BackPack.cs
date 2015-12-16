@@ -42,9 +42,10 @@
             }
         }
 
-        public void RemoveItem(IGameItem itemToBeRemoved)
+        public void RemoveItem(ISlot slot)
         {
-            throw new NotImplementedException();
+            slot.GameItem = null;
+            slot.IsEmpty = true;
         }
 
         public void ListItems()

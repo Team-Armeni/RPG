@@ -2,6 +2,6 @@
 {
     public interface IHeal
     {
-        void Heal();
+        void SelfHeal();
     }
 }

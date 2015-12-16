@@ -4,6 +4,6 @@
 
     public interface IArmor
     {
-        int DefenceBonus { get; set; }
+        int DefenceBonus { get; }
     }
 }

@@ -1,9 +1,9 @@
 ﻿namespace RPGArmeni.Interfaces
 {
-    public interface ICharacter : IAttack, IDestroyable
+    public interface ICharacter : IGameObject, IAttack, IDestroyable
     {
         string Name { get; }
 
-        Position Position { get; }
+        int Health { get; set; }
     }
 }

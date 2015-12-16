@@ -2,7 +2,7 @@
 {
     public interface IAttack
     {
-        int Damage { get; set; }
+        int Damage { get; }
 
         void Attack(ICharacter enemy);
     }

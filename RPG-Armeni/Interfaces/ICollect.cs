@@ -5,8 +5,8 @@
 
     public interface ICollect
     {
-        IEnumerable<IGameItem> Inventory { get; }
+        IInventory Inventory { get; }
 
-        void AddItemToInventory(IGameItem item);
+        IContainer BackPack { get; }
     }
 }

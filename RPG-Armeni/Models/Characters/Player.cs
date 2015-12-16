@@ -6,26 +6,55 @@
     using Exceptions;
     using Interfaces;
     using Items;
+    using RPGArmeni.Models.Containers;
 
     public class Player : Character, IPlayer
     {
-        private readonly List<Item> inventory;
+        private const int PlayerStartingX = 0;
+        private const int PlayerStartingY = 0;
+        private IInventory inventory;
+        private IContainer backPack;
+        private PlayerRace race;
  
         public Player(Position position, char objectSymbol, string name, PlayerRace race)
-            : base(position, objectSymbol, name, 0, 0)
+            : base(position, objectSymbol, name, PlayerStartingX, PlayerStartingY)
         {
             this.Race = race;
-            this.inventory = new List<Item>();
+            this.inventory = new Inventory();
+            this.BackPack = new BackPack();
             this.SetPlayerStats();
         }
 
-        public PlayerRace Race { get; private set; }
+        public PlayerRace Race
+        {
+            get { return this.race; }
+            private set
+            {
+                this.race = value;
+            }
+        }
 
-        public IEnumerable<Item> Inventory
+        public IInventory Inventory
         {
             get
             {
                 return this.inventory;
+            }
+            private set
+            {
+                this.inventory = value;
+            }
+        }
+
+        public IContainer BackPack
+        {
+            get
+            {
+                return this.backPack;
+            }
+            private set
+            {
+                this.backPack = value;
             }
         }
 
@@ -50,33 +79,24 @@
             }
         }
 
-        public void AddItemToInventory(Item item)
+        public void SelfHeal()
         {
-            this.inventory.Add(item);
-        }
+            ISlot healthPotionSlot = this.BackPack
+                .SlotList
+                .FirstOrDefault(x => x is HealthPotion);
 
-        public void Heal()
-        {
-            var beer = this.inventory.FirstOrDefault() as HealthPotion;
-
-            if (beer == null)
+            if (healthPotionSlot == null)
             {
-                throw new NotEnoughBeerException("Not enough beer!!!");
+                throw new NoHealthPotionsException("There are no health potions left in the backpack.");
             }
 
-            this.Health += beer.HealthRestore;
-            this.inventory.Remove(beer);
+            this.Health += (healthPotionSlot.GameItem as HealthPotion).HealthRestore;
+            this.BackPack.RemoveItem(healthPotionSlot);
         }
 
         public override string ToString()
         {
-            return string.Format(
-                "Player {0} ({1}): Damage ({2}), Health ({3}), Number of beers: {4}", 
-                this.Name, 
-                this.Race, 
-                this.Damage, 
-                this.Health, 
-                this.Inventory.Count());
+            return string.Format("");
         }
 
         private void SetPlayerStats()

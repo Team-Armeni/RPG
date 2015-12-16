@@ -3,7 +3,7 @@
     using System;
     using Interfaces;
 
-    public static class ConsoleInputReader : IInputReader
+    public static class ConsoleInputReader
     {
         public static string ReadLine()
         {

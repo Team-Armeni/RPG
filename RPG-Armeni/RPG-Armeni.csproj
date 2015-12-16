@@ -49,6 +49,9 @@
     <Compile Include="Engine\Factories\ItemFactory.cs" />
     <Compile Include="Engine\Factories\RandomGenerator.cs" />
     <Compile Include="Exceptions\BackPackFullException.cs" />
+    <Compile Include="Exceptions\InvalidHealthException.cs" />
+    <Compile Include="Exceptions\InvalidNameException.cs" />
+    <Compile Include="Exceptions\NoHealthPotionsException.cs" />
     <Compile Include="Exceptions\NoSlotAvailableException.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
     <Compile Include="Interfaces\ISlot.cs" />
@@ -82,10 +85,12 @@
     <Compile Include="Models\Containers\BackPack.cs" />
     <Compile Include="Models\Containers\Inventory.cs" />
     <Compile Include="Models\Containers\Slot.cs" />
+    <Compile Include="Models\Items\ArmorItems\ArmorItem.cs" />
     <Compile Include="Models\Items\HealthPotion.cs" />
     <Compile Include="Models\Items\HealthPotionSize.cs" />
     <Compile Include="Models\Items\Item.cs" />
     <Compile Include="Models\Items\ItemState.cs" />
+    <Compile Include="Models\Items\WeaponItems\WeaponItem.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="ArmeniMainProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,10 +103,7 @@
   <ItemGroup>
     <Content Include="HelpInfo.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Items\ArmorItems\" />
-    <Folder Include="Models\Items\WeaponItems\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

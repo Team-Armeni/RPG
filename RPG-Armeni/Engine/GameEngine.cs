@@ -10,7 +10,8 @@
     using RPGArmeni.Models.Characters;
     using Exceptions;
     using Interfaces;
-    using Items;
+    using RPGArmeni.UI;
+    using RPGArmeni.Models.Items;
 
     public class GameEngine
     {
@@ -21,9 +22,6 @@
         private const int InitialNumberOfBeers = 5;
 
         private static readonly Random Rand = new Random();
-
-        private readonly IInputReader reader;
-        private readonly IRenderer renderer;
 
         private readonly string[] characterNames =
         {
@@ -40,15 +38,13 @@
         };
 
         private readonly IList<GameObject> characters;
-        private readonly IList<GameObject> items;
+        private readonly IList<IGameItem> items;
         private IPlayer player;
 
-        public GameEngine(IInputReader reader, IRenderer renderer)
+        public GameEngine()
         {
-            this.reader = reader;
-            this.renderer = renderer;
             this.characters = new List<GameObject>();
-            this.items = new List<GameObject>();
+            this.items = new List<IGameItem>();
         }
 
         public bool IsRunning { get; private set; }
@@ -67,7 +63,7 @@
 
             while (this.IsRunning)
             {
-                string command = this.reader.ReadLine();
+                string command = ConsoleInputReader.ReadLine();
 
                 try
                 {
@@ -75,17 +71,17 @@
                 }
                 catch (ObjectOutOfBoundsException ex)
                 {
-                    this.renderer.WriteLine(ex.Message);
+                    ConsoleRenderer.WriteLine(ex.Message);
                 }
                 catch (Exception ex)
                 {
-                    this.renderer.WriteLine(ex.Message);
+                    ConsoleRenderer.WriteLine(ex.Message);
                 }
 
                 if (this.characters.Count == 0)
                 {
                     this.IsRunning = false;
-                    this.renderer.WriteLine("Valar morgulis!");
+                    ConsoleRenderer.WriteLine("Valar morgulis!");
                 }
             }
         }
@@ -109,16 +105,14 @@
                 case "status":
                     this.ShowStatus();
                     break;
-                case "heal":
-                    this.player.Heal();
-                    this.renderer.WriteLine("Healed!");
+                    ConsoleRenderer.WriteLine("Healed!");
                     break;
                 case "clear":
-                    this.renderer.Clear();
+                    ConsoleRenderer.Clear();
                     break;
                 case "exit":
                     this.IsRunning = false;
-                    this.renderer.WriteLine("Bye, noob!");
+                    ConsoleRenderer.WriteLine("Bye, noob!");
                     break;
                 default:
                     throw new ArgumentException("Unknown command", "command");
@@ -127,9 +121,9 @@
 
         private void ShowStatus()
         {
-            this.renderer.WriteLine(this.player.ToString());
+            ConsoleRenderer.WriteLine(this.player.ToString());
 
-            this.renderer.WriteLine(
+            ConsoleRenderer.WriteLine(
                 "Number of enemies left: {0}", 
                 this.characters.Count);
         }
@@ -151,8 +145,8 @@
                 return;
             }
 
-            Item beer =
-                this.items.Cast<Item>()
+            IGameItem beer =
+                this.items.Cast<IGameItem>()
                 .FirstOrDefault(
                     e => e.Position.X == this.player.Position.X 
                         && e.Position.Y == this.player.Position.Y 
@@ -160,9 +154,9 @@
 
             if (beer != null)
             {
-                this.player.AddItemToInventory(beer);
+                //this.player.AddItemToInventory(beer);
                 beer.ItemState = ItemState.Collected;
-                this.renderer.WriteLine("Beer collected!");
+                ConsoleRenderer.WriteLine("Beer collected!");
             }
         }
 
@@ -172,7 +166,7 @@
 
             if (enemy.Health <= 0)
             {
-                this.renderer.WriteLine("Enemy killed!");
+                ConsoleRenderer.WriteLine("Enemy killed!");
                 this.characters.Remove(enemy as GameObject);
                 return;
             }
@@ -182,7 +176,7 @@
             if (this.player.Health <= 0)
             {
                 this.IsRunning = false;
-                this.renderer.WriteLine("You dead!");
+                ConsoleRenderer.WriteLine("You dead!");
             }
         }
 
@@ -208,7 +202,7 @@
                              && c.Health > 0);
 
                     var item = this.items
-                        .Cast<Item>()
+                        .Cast<IGameItem>()
                         .FirstOrDefault(c => c.Position.X == col 
                             && c.Position.Y == row 
                             && c.ItemState == ItemState.Available);
@@ -231,32 +225,32 @@
                 sb.AppendLine();
             }
 
-            this.renderer.WriteLine(sb.ToString());
+            ConsoleRenderer.WriteLine(sb.ToString());
         }
 
         private void ExecuteHelpCommand()
         {
             string helpInfo = File.ReadAllText("../../HelpInfo.txt");
 
-            this.renderer.WriteLine(helpInfo);
+            ConsoleRenderer.WriteLine(helpInfo);
         }
 
         private PlayerRace GetPlayerRace()
         {
-            this.renderer.WriteLine("Choose a race:");
-            this.renderer.WriteLine("1. Elf (damage: 300, health: 100)");
-            this.renderer.WriteLine("2. Archangel (damage: 250, health: 150)");
-            this.renderer.WriteLine("3. Hulk (damage: 350, health: 75)");
-            this.renderer.WriteLine("4. Alcoholic (damage: 200, health: 200)");
+            ConsoleRenderer.WriteLine("Choose a race:");
+            ConsoleRenderer.WriteLine("1. Elf (damage: 300, health: 100)");
+            ConsoleRenderer.WriteLine("2. Archangel (damage: 250, health: 150)");
+            ConsoleRenderer.WriteLine("3. Hulk (damage: 350, health: 75)");
+            ConsoleRenderer.WriteLine("4. Alcoholic (damage: 200, health: 200)");
 
-            string choice = this.reader.ReadLine();
+            string choice = ConsoleInputReader.ReadLine();
 
             string[] validChoises = { "1", "2", "3", "4" };
 
             while (!validChoises.Contains(choice))
             {
-                this.renderer.WriteLine("Invalid choice of race, please re-enter.");
-                choice = this.reader.ReadLine();
+                ConsoleRenderer.WriteLine("Invalid choice of race, please re-enter.");
+                choice = ConsoleInputReader.ReadLine();
             }
 
             PlayerRace race = (PlayerRace)int.Parse(choice);
@@ -266,13 +260,13 @@
 
         private string GetPlayerName()
         {
-            this.renderer.WriteLine("Please enter your name:");
+            ConsoleRenderer.WriteLine("Please enter your name:");
 
-            string playerName = this.reader.ReadLine();
+            string playerName = ConsoleInputReader.ReadLine();
             while (string.IsNullOrWhiteSpace(playerName))
             {
-                this.renderer.WriteLine("Player name cannot be empty. Please re-enter.");
-                playerName = this.reader.ReadLine();
+                ConsoleRenderer.WriteLine("Player name cannot be empty. Please re-enter.");
+                playerName = ConsoleInputReader.ReadLine();
             }
 
             return playerName;
@@ -282,12 +276,12 @@
         {
             for (int i = 0; i < InitialNumberOfBeers; i++)
             {
-                Item beer = this.CreateItem();
+                IGameItem beer = this.CreateItem();
                 this.items.Add(beer);
             }
         }
 
-        private Item CreateItem()
+        private IGameItem CreateItem()
         {
             int currentX = Rand.Next(1, MapWidth);
             int currentY = Rand.Next(1, MapHeight);
