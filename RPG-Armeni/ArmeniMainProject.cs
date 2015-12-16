@@ -4,7 +4,7 @@
     using Interfaces;
     using UI;
 
-    public class RpgApp
+    public class ArmeniMainProject
     {
         public static void Main()
         {
