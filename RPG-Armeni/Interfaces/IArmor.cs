@@ -7,6 +7,6 @@
     {
         int DefenceBonus { get; }
 
-        public ArmorType ArmorType { get; }
+        ArmorType ArmorType { get; }
     }
 }

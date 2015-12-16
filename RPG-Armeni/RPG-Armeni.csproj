@@ -47,6 +47,7 @@
     <Compile Include="Engine\Commands\GameCommand.cs" />
     <Compile Include="Engine\Factories\CharacterFactory.cs" />
     <Compile Include="Engine\Factories\ItemFactory.cs" />
+    <Compile Include="Engine\Factories\PlayerFactory.cs" />
     <Compile Include="Engine\Factories\RandomGenerator.cs" />
     <Compile Include="Exceptions\BackPackFullException.cs" />
     <Compile Include="Exceptions\InvalidHealthException.cs" />

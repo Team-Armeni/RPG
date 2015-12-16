@@ -12,6 +12,7 @@
     using Interfaces;
     using RPGArmeni.UI;
     using RPGArmeni.Models.Items;
+    using RPGArmeni.Engine.Factories;
 
     public class GameEngine
     {
@@ -53,10 +54,11 @@
         {
             this.IsRunning = true;
 
-            var playerName = this.GetPlayerName();
-            PlayerRace race = this.GetPlayerRace();
+            //var playerName = this.GetPlayerName();
+            //PlayerRace race = this.GetPlayerRace();
 
-            this.player = new Player(new Position(0, 0), 'P', playerName, race);
+            //this.player = new Player(new Position(0, 0), 'P', playerName, race);
+            this.player = PlayerFactory.Instance.CreatePlayer();
 
             this.PopulateEnemies();
             this.PopulateItems();

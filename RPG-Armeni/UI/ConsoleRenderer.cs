@@ -10,6 +10,11 @@
             Console.WriteLine(message, paramaters);
         }
 
+        public static void Write(string message, params object[] parameters)
+        {
+            Console.Write(message, parameters);
+        }
+
         public static void Clear()
         {
             Console.Clear();

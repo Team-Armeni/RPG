@@ -17,7 +17,7 @@
         private PlayerRace race;
  
         public Player(Position position, char objectSymbol, string name, PlayerRace race)
-            : base(position, objectSymbol, name, PlayerStartingX, PlayerStartingY)
+            : base(position, objectSymbol, name, 1, 1)
         {
             this.Race = race;
             this.inventory = new Inventory();
