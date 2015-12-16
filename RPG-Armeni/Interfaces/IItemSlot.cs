@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Game.GameObjects.Inventory.ItemSlots;
-
-namespace Game.Interfaces
+﻿namespace RPGArmeni.Interfaces
 {
+    using System;
+
     public interface IItemSlot
     {
-        IItem Item { get; set; }
+        IGameItem Item { get; set; }
 
         bool IsEmpty { get; }
 
