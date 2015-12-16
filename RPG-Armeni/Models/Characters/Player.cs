@@ -14,18 +14,17 @@
         private const int PlayerStartingY = 0;
         private IInventory inventory;
         private IContainer backPack;
-        private PlayerRace race;
+        private IRace race;
  
-        public Player(Position position, char objectSymbol, string name, PlayerRace race)
-            : base(position, objectSymbol, name, 1, 1)
+        public Player(IPosition position, char objectSymbol, string name, IRace race)
+            : base(position, objectSymbol, name, race.Health, race.Damage)
         {
             this.Race = race;
             this.inventory = new Inventory();
             this.BackPack = new BackPack();
-            this.SetPlayerStats();
         }
 
-        public PlayerRace Race
+        public IRace Race
         {
             get { return this.race; }
             private set
@@ -97,31 +96,6 @@
         public override string ToString()
         {
             return string.Format("");
-        }
-
-        private void SetPlayerStats()
-        {
-            switch (this.Race)
-            {
-                case PlayerRace.Elf:
-                    this.Damage = 300;
-                    this.Health = 100;
-                    break;
-                case PlayerRace.Archangel:
-                    this.Damage = 250;
-                    this.Health = 150;
-                    break;
-                case PlayerRace.Hulk:
-                    this.Damage = 350;
-                    this.Health = 75;
-                    break;
-                case PlayerRace.Alcoholic:
-                    this.Damage = 200;
-                    this.Health = 200;
-                    break;
-                default:
-                    throw new ArgumentException("Unknown player race.");
-            }
         }
     }
 }

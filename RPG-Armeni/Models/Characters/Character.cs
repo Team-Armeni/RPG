@@ -10,7 +10,7 @@
         private int health;
         private int damage;
 
-        protected Character(Position position, char objectSymbol, string name, int damage, int health)
+        protected Character(IPosition position, char objectSymbol, string name, int damage, int health)
             : base(position, objectSymbol)
         {
             this.Damage = damage;

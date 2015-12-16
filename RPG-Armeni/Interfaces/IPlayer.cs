@@ -4,6 +4,6 @@
 
     public interface IPlayer : ICharacter, IMoveable, ICollect
     {
-        PlayerRace Race { get; }
+        IRace Race { get; }
     }
 }

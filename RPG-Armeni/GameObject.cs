@@ -10,7 +10,7 @@
         private IPosition position;
         private char objectSymbol;
 
-        protected GameObject(Position position, char objectSymbol)
+        protected GameObject(IPosition position, char objectSymbol)
         {
             this.Position = position;
             this.ObjectSymbol = objectSymbol;

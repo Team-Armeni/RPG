@@ -2,16 +2,22 @@
 {
     using Attributes;
 
-    [Enemy]
-    public class Orc : Character
+    [Race]
+    public class Orc : Race
     {
-        private const int OrkDamage = 100;
-        private const int OrkHealth = 150;
-        private const char OrkSymbol = 'O';
+        private const int OrcBaseDamage = 100;
+        private const int OrcBaseHealth = 150;
 
-        public Orc(Position position, string name)
-            : base(position, OrkSymbol, name, OrkDamage, OrkHealth)
+        public Orc(int health, int damage)
+            : base(OrcBaseHealth, OrcBaseDamage)
         {
+        }
+
+        public Orc()
+            : base()
+        {
+            this.Health = OrcBaseHealth;
+            this.Damage = OrcBaseDamage;
         }
     }
 }

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\EnemyAttribute.cs" />
+    <Compile Include="Attributes\RaceAttribute.cs" />
     <Compile Include="Engine\Commands\CreateCharacterCommand.cs" />
     <Compile Include="Engine\Commands\CreateItemCommand.cs" />
     <Compile Include="Engine\Commands\GameCommand.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Exceptions\NoHealthPotionsException.cs" />
     <Compile Include="Exceptions\NoSlotAvailableException.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
+    <Compile Include="Interfaces\IRace.cs" />
     <Compile Include="Interfaces\ISlot.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
     <Compile Include="Interfaces\IGameCommand.cs" />
@@ -69,7 +71,7 @@
     <Compile Include="Models\Characters\Ninja.cs" />
     <Compile Include="Models\Characters\Orc.cs" />
     <Compile Include="Models\Characters\Player.cs" />
-    <Compile Include="Models\Characters\PlayerRace.cs" />
+    <Compile Include="Models\Characters\Race.cs" />
     <Compile Include="Models\Characters\Troll.cs" />
     <Compile Include="Engine\GameEngine.cs" />
     <Compile Include="Exceptions\ObjectOutOfBoundsException.cs" />

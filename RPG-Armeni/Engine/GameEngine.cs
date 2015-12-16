@@ -53,11 +53,6 @@
         public void Run()
         {
             this.IsRunning = true;
-
-            //var playerName = this.GetPlayerName();
-            //PlayerRace race = this.GetPlayerRace();
-
-            //this.player = new Player(new Position(0, 0), 'P', playerName, race);
             this.player = PlayerFactory.Instance.CreatePlayer();
 
             this.PopulateEnemies();
@@ -235,29 +230,6 @@
             string helpInfo = File.ReadAllText("../../HelpInfo.txt");
 
             ConsoleRenderer.WriteLine(helpInfo);
-        }
-
-        private PlayerRace GetPlayerRace()
-        {
-            ConsoleRenderer.WriteLine("Choose a race:");
-            ConsoleRenderer.WriteLine("1. Elf (damage: 300, health: 100)");
-            ConsoleRenderer.WriteLine("2. Archangel (damage: 250, health: 150)");
-            ConsoleRenderer.WriteLine("3. Hulk (damage: 350, health: 75)");
-            ConsoleRenderer.WriteLine("4. Alcoholic (damage: 200, health: 200)");
-
-            string choice = ConsoleInputReader.ReadLine();
-
-            string[] validChoises = { "1", "2", "3", "4" };
-
-            while (!validChoises.Contains(choice))
-            {
-                ConsoleRenderer.WriteLine("Invalid choice of race, please re-enter.");
-                choice = ConsoleInputReader.ReadLine();
-            }
-
-            PlayerRace race = (PlayerRace)int.Parse(choice);
-
-            return race;
         }
 
         private string GetPlayerName()
