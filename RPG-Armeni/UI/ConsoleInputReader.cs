@@ -3,9 +3,9 @@
     using System;
     using Interfaces;
 
-    public class ConsoleInputReader : IInputReader
+    public static class ConsoleInputReader : IInputReader
     {
-        public string ReadLine()
+        public static string ReadLine()
         {
             return Console.ReadLine();
         }

@@ -24,6 +24,9 @@
             }
         }
 
-        public IGameItem CreateItem(string[] args);
+        public IGameItem CreateItem(string[] args)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

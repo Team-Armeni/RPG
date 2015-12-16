@@ -5,11 +5,9 @@
 
     public interface IContainer
     {
-        int NumberOfSlots { get; }
+        IEnumerable<ISlot> SlotList { get; }
 
-        IEnumerable<ISlot> Slots { get; }
-
-        void AddItem(IGameItem itemToBeAdded);
+        void LootItem(IGameItem itemToBeLooted);
 
         void RemoveItem(IGameItem itemToBeRemoved);
 

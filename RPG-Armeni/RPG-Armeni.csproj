@@ -48,6 +48,7 @@
     <Compile Include="Engine\Factories\CharacterFactory.cs" />
     <Compile Include="Engine\Factories\ItemFactory.cs" />
     <Compile Include="Engine\Factories\RandomGenerator.cs" />
+    <Compile Include="Exceptions\BackPackFullException.cs" />
     <Compile Include="Exceptions\NoSlotAvailableException.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
     <Compile Include="Interfaces\ISlot.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Interfaces\IMoveable.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IRenderer.cs" />
+    <Compile Include="Models\Containers\BackPack.cs" />
     <Compile Include="Models\Containers\Inventory.cs" />
     <Compile Include="Models\Containers\Slot.cs" />
     <Compile Include="Models\Items\HealthPotion.cs" />

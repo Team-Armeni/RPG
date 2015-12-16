@@ -3,14 +3,14 @@
     using System;
     using Interfaces;
 
-    public class ConsoleRenderer : IRenderer
+    public static class ConsoleRenderer : IRenderer
     {
-        public void WriteLine(string message, params object[] paramaters)
+        public static void WriteLine(string message, params object[] paramaters)
         {
             Console.WriteLine(message, paramaters);
         }
 
-        public void Clear()
+        public static void Clear()
         {
             Console.Clear();
         }
