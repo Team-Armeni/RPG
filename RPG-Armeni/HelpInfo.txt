@@ -18,8 +18,8 @@ type "exit" - end the game;
 
 Map symbols legend:
 P - the player;
-T - trol, an enemy character - those are tough, avoid them at the beginning until you get stronger;
-O - orc, an enemy character - not as tough as trols, but also a hard opponent to face;
+T - troll, an enemy character - those are tough, avoid them at the beginning until you get stronger;
+O - orc, an enemy character - not as tough as trolls, but also a hard opponent to face;
 E - elf, an enemy character;
 M - human, an enemy character;
 G - goblin, an enemy character - those are easy to defeat, you should probably start with them;
