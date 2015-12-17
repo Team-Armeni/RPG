@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RPGArmeni.Interfaces;
 using System.IO;
 using RPGArmeni.UI;
@@ -18,7 +14,7 @@ namespace RPGArmeni.Engine.Commands
 
         public override void Execute(string[] args)
         {
-            string helpInfo = File.ReadAllText("../../HelpInfo.txt");
+            string helpInfo = File.ReadAllText("../../UI/Utility/HelpInfo.txt");
 
             ConsoleRenderer.WriteLine(helpInfo);
         }

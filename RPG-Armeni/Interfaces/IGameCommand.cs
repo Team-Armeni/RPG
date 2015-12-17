@@ -1,8 +1,6 @@
 ﻿namespace RPGArmeni.Interfaces
 {
-    using System;
-
-    public interface IGameCommand
+	public interface IGameCommand
     {
         IGameEngine Engine { get; set; }
 

@@ -3,9 +3,8 @@
     using RPGArmeni.Interfaces;
     using RPGArmeni.Models.Items;
     using System;
-    using System.Linq;
 
-    public class ItemFactory
+	public class ItemFactory
     {
         private static ItemFactory instance;
 

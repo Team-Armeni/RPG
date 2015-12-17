@@ -1,8 +1,6 @@
 ﻿namespace RPGArmeni.Interfaces
 {
-    using System;
-
-    public interface IPosition
+	public interface IPosition
     {
         int X { get; set; }
 

@@ -1,9 +1,8 @@
 ﻿namespace RPGArmeni.Models.Containers
 {
     using RPGArmeni.Interfaces;
-    using System;
 
-    public class Slot : ISlot
+	public class Slot : ISlot
     {
         private IGameItem gameItem;
         private bool isEmpty;

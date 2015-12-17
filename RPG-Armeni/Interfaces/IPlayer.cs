@@ -1,8 +1,6 @@
 ﻿namespace RPGArmeni.Interfaces
 {
-    using Models.Characters;
-
-    public interface IPlayer : ICharacter, IMoveable, ICollect
+	public interface IPlayer : ICharacter, IMoveable, ICollect
     {
         string Name { get; }
 

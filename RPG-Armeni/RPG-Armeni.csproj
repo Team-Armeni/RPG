@@ -117,7 +117,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HelpInfo.txt" />
+    <Content Include="UI\Utility\GameOver.txt" />
+    <Content Include="UI\Utility\HelpInfo.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

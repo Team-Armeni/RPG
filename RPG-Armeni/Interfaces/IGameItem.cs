@@ -1,7 +1,6 @@
 ﻿namespace RPGArmeni.Interfaces
 {
-    using System;
-    using Models.Items;
+	using Models.Items;
 
     public interface IGameItem : IGameObject
     {

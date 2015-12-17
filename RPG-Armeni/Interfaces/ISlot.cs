@@ -1,8 +1,6 @@
 ﻿namespace RPGArmeni.Interfaces
 {
-    using System;
-
-    public interface ISlot
+	public interface ISlot
     {
         IGameItem GameItem { get; set; }
 

@@ -1,12 +1,9 @@
 ﻿namespace RPGArmeni.Engine.Commands
 {
     using RPGArmeni.Interfaces;
-    using RPGArmeni.Models.Items;
-    using RPGArmeni.UI;
     using System;
-    using System.Text;
 
-    public class PrintMapCommand : GameCommand
+	public class PrintMapCommand : GameCommand
     {
         public PrintMapCommand(IGameEngine engine)
             : base(engine)

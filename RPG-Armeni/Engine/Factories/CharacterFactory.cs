@@ -3,13 +3,10 @@
     using RPGArmeni.Attributes;
     using RPGArmeni.Interfaces;
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    public class CharacterFactory
+	public class CharacterFactory
     {
         private static CharacterFactory instance;
 

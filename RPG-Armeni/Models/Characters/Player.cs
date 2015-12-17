@@ -1,7 +1,6 @@
 ﻿namespace RPGArmeni.Models.Characters
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using Exceptions;
     using Interfaces;
@@ -119,7 +118,7 @@
                     this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
                     break;
                 case "right":
-                    if (this.Position.Y + 1 >= this.Engine.Map.Width)
+					if (this.Position.Y + 1 >= this.Engine.Map.Width)
                     {
                         throw new ObjectOutOfBoundsException("You have reached the border of the map.");
                     }
