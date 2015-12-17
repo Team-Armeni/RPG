@@ -49,14 +49,14 @@
 
             var enemyTypes = Assembly.GetExecutingAssembly()
                 .GetTypes()
-                .Where(t => t.CustomAttributes
+                .Where(type => type.CustomAttributes
                     .Any(a => a.AttributeType == typeof(EnemyAttribute)))
                     .ToArray();
 
-            var type = enemyTypes[RandomGenerator.GenerateNumber(0, enemyTypes.Length)];
+            Type currentType = enemyTypes[RandomGenerator.GenerateNumber(0, enemyTypes.Length)];
 
             ICharacter currentCharacter = Activator
-                .CreateInstance(type, new Position(currentX, currentY)) as ICharacter;
+                .CreateInstance(currentType, new Position(currentX, currentY)) as ICharacter;
             this.Engine.Map.Matrix[currentX, currentY] = currentCharacter.ObjectSymbol;
 
             return currentCharacter;

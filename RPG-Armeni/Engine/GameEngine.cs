@@ -224,36 +224,6 @@
             }
         }
 
-        private GameObject CreateEnemy()
-        {
-            int currentX = RandomGenerator.GenerateNumber(1, MapWidth);
-            int currentY = RandomGenerator.GenerateNumber(1, MapHeight);
-
-            bool containsEnemy = this.characters
-                .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
-
-            while (containsEnemy)
-            {
-                currentX = RandomGenerator.GenerateNumber(1, MapWidth);
-                currentY = RandomGenerator.GenerateNumber(1, MapHeight);
-
-                containsEnemy = this.characters
-                .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
-            }
-            var enemyTypes = Assembly.GetExecutingAssembly()
-                .GetTypes()
-                .Where(t => t.CustomAttributes
-                    .Any(a => a.AttributeType == typeof(EnemyAttribute)))
-                    .ToArray();
-
-            var type = enemyTypes[RandomGenerator.GenerateNumber(0, enemyTypes.Length)];
-
-            GameObject character = Activator
-                .CreateInstance(type, new Position(currentX, currentY)) as GameObject;
-
-            return character;
-        }
-
         private void InitializeMap()
         {
             for (int i = 0; i < this.Map.Height; i++)
