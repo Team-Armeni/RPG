@@ -37,12 +37,15 @@
             }
         }
 
+        public IGameEngine Engine { get; set; }
+
         public IPlayer CreatePlayer()
         {
             string name = this.GetPlayerName();
             IRace playerRace = this.GetPlayerRace();
             IPosition startingPosition = new Position(0, 0);
             char playerSymbol = 'P';
+            this.Engine.Map.Matrix[startingPosition.X, startingPosition.Y] = playerSymbol;
 
             return new Player(startingPosition, playerSymbol, name, playerRace);
 

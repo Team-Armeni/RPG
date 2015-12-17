@@ -71,6 +71,11 @@
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Write(this.Engine.Map.Matrix[i, j]);
                     }
+                    else if (this.Engine.Map.Matrix[i, j] == 'P')
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(this.Engine.Map.Matrix[i, j]);
+                    }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;

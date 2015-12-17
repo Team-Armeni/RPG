@@ -45,6 +45,7 @@
     <Compile Include="Attributes\RaceAttribute.cs" />
     <Compile Include="Engine\Commands\GameCommand.cs" />
     <Compile Include="Engine\Commands\HelpCommand.cs" />
+    <Compile Include="Engine\Commands\MovePlayerCommand.cs" />
     <Compile Include="Engine\Commands\PlayerStatusCommand.cs" />
     <Compile Include="Engine\Commands\PrintMapCommand.cs" />
     <Compile Include="Engine\Commands\SpawnEnemiesCommand.cs" />
