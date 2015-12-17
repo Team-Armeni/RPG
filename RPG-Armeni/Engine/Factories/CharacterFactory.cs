@@ -28,6 +28,8 @@ namespace RPGArmeni.Engine.Factories
             }
         }
 
+        public IGameEngine Engine { get; set; }
+
         public ICharacter CreateCharacter(string[] args)
         {
             throw new NotImplementedException();

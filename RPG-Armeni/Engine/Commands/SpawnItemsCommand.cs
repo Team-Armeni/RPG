@@ -1,4 +1,5 @@
-﻿using RPGArmeni.Interfaces;
+﻿using RPGArmeni.Engine.Factories;
+using RPGArmeni.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace RPGArmeni.Engine.Commands
         {
             for (int i = 0; i < this.Engine.NumberOfItems; i++)
             {
-                IGameItem newItem = this.CreateItem();
+                IGameItem newItem = ItemFactory.Instance.CreateItem();
                 this.Engine.AddItem(newItem);
             }
         }

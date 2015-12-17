@@ -99,7 +99,6 @@
             this.player = PlayerFactory.Instance.CreatePlayer();
 
             this.PopulateEnemies();
-            this.PopulateItems();
 
             IGameCommand spawnItems = new SpawnItemsCommand(this);
             spawnItems.Execute();
@@ -129,7 +128,7 @@
             }
         }
 
-        private void ExecuteCommand(string command)
+        protected virtual void ExecuteCommand(string command)
         {
             IGameCommand currentCommand;
             string[] commandArgs = command.Split(new char[]{ ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -224,14 +223,14 @@
             }
         }
 
-        private void PopulateItems()
-        {
-            for (int i = 0; i < numberOfItems; i++)
-            {
-                IGameItem beer = this.CreateItem();
-                this.items.Add(beer);
-            }
-        }
+        //private void PopulateItems()
+        //{
+        //    for (int i = 0; i < numberOfItems; i++)
+        //    {
+        //        IGameItem beer = this.CreateItem();
+        //        this.items.Add(beer);
+        //    }
+        //}
 
         private IGameItem CreateItem()
         {
