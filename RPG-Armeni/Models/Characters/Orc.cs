@@ -5,7 +5,7 @@
     [Race]
     public class Orc : Race
     {
-        private const int OrcBaseDamage = 100;
+        private const int OrcBaseDamage = 30;
         private const int OrcBaseHealth = 150;
 
         public Orc(int health, int damage)

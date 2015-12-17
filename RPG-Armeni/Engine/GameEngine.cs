@@ -24,20 +24,6 @@
 
         private static readonly Random Rand = new Random();
 
-        private readonly string[] characterNames =
-        {
-            "Alinar",
-            "Zandro",
-            "Llombaerth",
-            "Inchel",
-            "Aymer",
-            "Folre",
-            "Nyvorlas",
-            "Khuumal",
-            "Intevar",
-            "Nopos"
-        };
-
         private readonly IList<GameObject> characters;
         private readonly IList<IGameItem> items;
         private IPlayer player;
@@ -280,24 +266,24 @@
 
             int beerType = Rand.Next(0, 3);
 
-            HealthPotionSize beerSize;
+            HealthPotionSize potionSize;
 
             switch (beerType)
             {
                 case 0:
-                    beerSize = HealthPotionSize.Minor;
+                    potionSize = HealthPotionSize.Minor;
                     break;
                 case 1:
-                    beerSize = HealthPotionSize.Normal;
+                    potionSize = HealthPotionSize.Normal;
                     break;
                 case 2:
-                    beerSize = HealthPotionSize.Major;
+                    potionSize = HealthPotionSize.Major;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException("beerType", "Invalid beer type.");
+                    throw new ArgumentOutOfRangeException("potionType", "Invalid potion type.");
             }
 
-            return new HealthPotion(new Position(currentX, currentY), beerSize);
+            return new HealthPotion(new Position(currentX, currentY), potionSize);
         }
 
         private void PopulateEnemies()
@@ -325,10 +311,6 @@
                 containsEnemy = this.characters
                 .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
             }
-
-            int nameIndex = Rand.Next(0, this.characterNames.Length);
-            string name = this.characterNames[nameIndex];
-
             var enemyTypes = Assembly.GetExecutingAssembly()
                 .GetTypes()
                 .Where(t => t.CustomAttributes
@@ -338,7 +320,7 @@
             var type = enemyTypes[Rand.Next(0, enemyTypes.Length)];
 
             GameObject character = Activator
-                .CreateInstance(type, new Position(currentX, currentY), name) as GameObject;
+                .CreateInstance(type, new Position(currentX, currentY)) as GameObject;
 
             return character;
         }

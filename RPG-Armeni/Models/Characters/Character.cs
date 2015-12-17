@@ -6,37 +6,17 @@
 
     public abstract class Character : GameObject, ICharacter
     {
-        private string name;
         private int health;
         private int damage;
 
-        protected Character(IPosition position, char objectSymbol, string name, int damage, int health)
+        protected Character(IPosition position, char objectSymbol, int damage, int health)
             : base(position, objectSymbol)
         {
             this.Damage = damage;
             this.Health = this.ValidateHealth(health);
-            this.Name = name;
         }
 
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-
-            private set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new InvalidNameException("Name cannot be null, empty or whitespace.");
-                }
-
-                this.name = value;
-            }
-        }
-
-        public int Health
+       public int Health
         {
             get
             {

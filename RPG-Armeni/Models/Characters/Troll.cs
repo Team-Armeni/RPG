@@ -9,8 +9,8 @@
         private const int TrollHealth = 400;
         private const char TrollSymbol = 'T';
 
-        public Troll(Position position, string name)
-            : base(position, TrollSymbol, name, TrollDamage, TrollHealth)
+        public Troll(Position position)
+            : base(position, TrollSymbol, TrollDamage, TrollHealth)
         {
         }
     }

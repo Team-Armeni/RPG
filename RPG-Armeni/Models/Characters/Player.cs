@@ -12,18 +12,37 @@
     {
         private const int PlayerStartingX = 0;
         private const int PlayerStartingY = 0;
+        private string name;
         private IInventory inventory;
         private IContainer backPack;
         private IRace race;
  
         public Player(IPosition position, char objectSymbol, string name, IRace race)
-            : base(position, objectSymbol, name, race.Health, race.Damage)
+            : base(position, objectSymbol, race.Damage, race.Health)
         {
+            this.Name = name;
             this.Race = race;
             this.inventory = new Inventory();
             this.BackPack = new BackPack();
         }
 
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+
+            private set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new InvalidNameException("Name cannot be null, empty or whitespace.");
+                }
+
+                this.name = value;
+            }
+        }
         public IRace Race
         {
             get { return this.race; }

@@ -67,8 +67,6 @@
     <Compile Include="Interfaces\IPosition.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Models\Characters\Character.cs" />
-    <Compile Include="Models\Characters\Fairy.cs" />
-    <Compile Include="Models\Characters\Ninja.cs" />
     <Compile Include="Models\Characters\Orc.cs" />
     <Compile Include="Models\Characters\Player.cs" />
     <Compile Include="Models\Characters\Race.cs" />
