@@ -61,11 +61,21 @@
             //ConsoleRenderer.WriteLine(sb.ToString());
 
             Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Red;
             for (int i = 0; i < this.Engine.Map.Height; i++)
             {
                 for (int j = 0; j < this.Engine.Map.Width; j++)
                 {
-                    Console.Write(this.Engine.Map.Matrix[i, j]);
+                    if (this.Engine.Map.Matrix[i, j] != '.')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Write(this.Engine.Map.Matrix[i, j]);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+                    else
+                    {
+                        Console.Write(this.Engine.Map.Matrix[i, j]); 
+                    }
                 }
                 Console.WriteLine();
             }

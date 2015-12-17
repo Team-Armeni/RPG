@@ -26,7 +26,7 @@
             {
                 if (this.IsOutsideGameField(value))
                 {
-                    throw new ObjectOutOfBoundsException("Specified coordinates are outside map.");
+                    throw new ObjectOutOfBoundsException("Specified coordinates are outside the game map.");
                 }
 
                 this.position = value;
@@ -55,8 +55,8 @@
         {
             bool isOutside = value.X < 0
                     || value.Y < 0
-                    || value.X >= GameEngine.MapWidth
-                    || value.Y >= GameEngine.MapHeight;
+                    || value.X >= GameEngine.MapHeight
+                    || value.Y >= GameEngine.MapWidth;
 
             return isOutside;
         }

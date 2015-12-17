@@ -30,8 +30,8 @@
 
         public IGameItem CreateItem()
         {
-            int currentX = RandomGenerator.GenerateNumber(1, this.Engine.Map.Height);
-            int currentY = RandomGenerator.GenerateNumber(1, this.Engine.Map.Width);
+            int currentX = RandomGenerator.GenerateNumber(0, this.Engine.Map.Height);
+            int currentY = RandomGenerator.GenerateNumber(0, this.Engine.Map.Width);
 
             bool containsEnemy = this.Engine.Characters
                 .Any(enemy => enemy.Position.X == currentX && enemy.Position.Y == currentY);
@@ -41,8 +41,8 @@
 
             while (containsEnemy || containsItem)
             {
-                currentX = RandomGenerator.GenerateNumber(1, this.Engine.Map.Height);
-                currentY = RandomGenerator.GenerateNumber(1, this.Engine.Map.Width);
+                currentX = RandomGenerator.GenerateNumber(0, this.Engine.Map.Height);
+                currentY = RandomGenerator.GenerateNumber(0, this.Engine.Map.Width);
 
                 containsEnemy = this.Engine.Characters
                 .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
