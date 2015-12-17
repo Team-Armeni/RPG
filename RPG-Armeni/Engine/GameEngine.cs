@@ -21,8 +21,8 @@
         public const int MapWidth = 50;
         public const int MapHeight = 20;
 
-        private const int InitialNumberOfEnemies = 20;
-        private const int InitialNumberOfPotions = 20;
+        private int numberOfEnemies;
+        private int numberOfItems;
 
         private readonly IList<IGameObject> characters;
         private readonly IList<IGameItem> items;
@@ -35,6 +35,8 @@
             this.items = new List<IGameItem>();
             this.Map = new Map(MapHeight, MapWidth);
             this.InitializeMap();
+            this.NumberOfEnemies = 20;
+            this.NumberOfItems = 20;
         }
 
         public IEnumerable<IGameObject> Characters
@@ -71,6 +73,24 @@
             }
         }
 
+        public int NumberOfItems
+        {
+            get { return this.numberOfItems; }
+            private set
+            {
+                this.numberOfItems = value;
+            }
+        }
+
+        public int NumberOfEnemies
+        {
+            get { return this.numberOfEnemies; }
+            private set
+            {
+                this.numberOfEnemies = value;
+            }
+        }
+
         public bool IsRunning { get; private set; }
 
         public void Run()
@@ -80,6 +100,9 @@
 
             this.PopulateEnemies();
             this.PopulateItems();
+
+            IGameCommand spawnItems = new SpawnItemsCommand(this);
+            spawnItems.Execute();
 
             while (this.IsRunning)
             {
@@ -203,7 +226,7 @@
 
         private void PopulateItems()
         {
-            for (int i = 0; i < InitialNumberOfPotions; i++)
+            for (int i = 0; i < numberOfItems; i++)
             {
                 IGameItem beer = this.CreateItem();
                 this.items.Add(beer);
@@ -257,7 +280,7 @@
 
         private void PopulateEnemies()
         {
-            for (int i = 0; i < InitialNumberOfEnemies; i++)
+            for (int i = 0; i < NumberOfEnemies; i++)
             {
                 GameObject enemy = this.CreateEnemy();
                 this.characters.Add(enemy);
@@ -303,6 +326,16 @@
                     this.Map.Matrix[i, j] = '.';
                 }
             }
+        }
+
+        public void AddItem(IGameItem itemToBeAdded)
+        {
+            this.items.Add(itemToBeAdded);
+        }
+
+        public void AddEnemy(ICharacter enemyToBeAdded)
+        {
+            this.characters.Add(enemyToBeAdded);
         }
     }
 }

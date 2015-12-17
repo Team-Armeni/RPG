@@ -71,5 +71,10 @@
             }
             Console.ResetColor();
         }
+
+        public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -7,5 +7,7 @@
         IGameEngine Engine { get; set; }
 
         void Execute(string[] args);
+
+        void Execute();
     }
 }

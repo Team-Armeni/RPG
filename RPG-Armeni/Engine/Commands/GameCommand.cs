@@ -25,5 +25,7 @@
         }
 
         public abstract void Execute(string[] args);
+
+        public abstract void Execute();
     }
 }

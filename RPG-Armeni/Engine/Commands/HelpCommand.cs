@@ -22,5 +22,10 @@ namespace RPGArmeni.Engine.Commands
 
             ConsoleRenderer.WriteLine(helpInfo);
         }
+
+        public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

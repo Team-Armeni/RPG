@@ -16,7 +16,15 @@ namespace RPGArmeni.Engine.Commands
 
         public override void Execute(string[] args)
         {
-            throw new NotImplementedException();
+        }
+
+        public override void Execute()
+        {
+            for (int i = 0; i < this.Engine.NumberOfItems; i++)
+            {
+                IGameItem newItem = this.CreateItem();
+                this.Engine.AddItem(newItem);
+            }
         }
     }
 }

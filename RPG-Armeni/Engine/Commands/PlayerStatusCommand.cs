@@ -20,5 +20,10 @@
                 "Number of enemies left: {0}",
                 this.Engine.Characters.Count());
         }
+
+        public override void Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
