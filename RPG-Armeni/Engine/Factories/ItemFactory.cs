@@ -34,12 +34,12 @@
             int currentY = RandomGenerator.GenerateNumber(1, this.Engine.Map.Width);
 
             bool containsEnemy = this.Engine.Characters
+                .Any(enemy => enemy.Position.X == currentX && enemy.Position.Y == currentY);
+
+            bool containsItem = this.Engine.Items
                 .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
 
-            bool containsBeer = this.Engine.Items
-                .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
-
-            while (containsEnemy || containsBeer)
+            while (containsEnemy || containsItem)
             {
                 currentX = RandomGenerator.GenerateNumber(1, this.Engine.Map.Height);
                 currentY = RandomGenerator.GenerateNumber(1, this.Engine.Map.Width);
@@ -47,15 +47,15 @@
                 containsEnemy = this.Engine.Characters
                 .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
 
-                containsBeer = this.Engine.Items
+                containsItem = this.Engine.Items
                 .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
             }
 
-            int beerType = RandomGenerator.GenerateNumber(0, 3);
+            int potionType = RandomGenerator.GenerateNumber(0, 3);
 
             HealthPotionSize potionSize;
 
-            switch (beerType)
+            switch (potionType)
             {
                 case 0:
                     potionSize = HealthPotionSize.Minor;
@@ -67,7 +67,7 @@
                     potionSize = HealthPotionSize.Major;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException("potionType", "Invalid potion type.");
+                    throw new ArgumentOutOfRangeException("Invalid potion type.");
             }
 
             return new HealthPotion(new Position(currentX, currentY), potionSize);

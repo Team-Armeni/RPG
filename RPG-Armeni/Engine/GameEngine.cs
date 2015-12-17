@@ -18,8 +18,8 @@
 
     public class GameEngine : IGameEngine
     {
-        public const int MapWidth = 50;
         public const int MapHeight = 20;
+        public const int MapWidth = 50;
 
         private int numberOfEnemies;
         private int numberOfItems;
