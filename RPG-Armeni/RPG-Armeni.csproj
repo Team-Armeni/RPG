@@ -68,6 +68,10 @@
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Models\Characters\Character.cs" />
     <Compile Include="Models\Characters\Elf.cs" />
+    <Compile Include="Models\Characters\EnemyElf.cs" />
+    <Compile Include="Models\Characters\EnemyHuman.cs" />
+    <Compile Include="Models\Characters\EnemyOrc.cs" />
+    <Compile Include="Models\Characters\Goblin.cs" />
     <Compile Include="Models\Characters\Human.cs" />
     <Compile Include="Models\Characters\Orc.cs" />
     <Compile Include="Models\Characters\Player.cs" />

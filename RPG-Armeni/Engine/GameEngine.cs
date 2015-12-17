@@ -19,8 +19,8 @@
         public const int MapWidth = 20;
         public const int MapHeight = 20;
 
-        private const int InitialNumberOfEnemies = 2;
-        private const int InitialNumberOfPotions = 5;
+        private const int InitialNumberOfEnemies = 20;
+        private const int InitialNumberOfPotions = 20;
 
         private static readonly Random Rand = new Random();
 
