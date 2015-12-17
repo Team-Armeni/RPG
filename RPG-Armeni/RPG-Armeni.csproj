@@ -98,8 +98,10 @@
     <Compile Include="Models\Containers\Slot.cs" />
     <Compile Include="Models\Items\ArmorItems\ArmorItem.cs" />
     <Compile Include="Models\Items\ArmorItems\ArmorType.cs" />
+    <Compile Include="Models\Items\HealthBonusPotionSize.cs" />
     <Compile Include="Models\Items\HealthPotion.cs" />
     <Compile Include="Models\Items\HealthPotionSize.cs" />
+    <Compile Include="Models\Items\HealthBonusPotion.cs" />
     <Compile Include="Models\Items\Item.cs" />
     <Compile Include="Models\Items\ItemState.cs" />
     <Compile Include="Models\Items\WeaponItems\WeaponItem.cs" />
