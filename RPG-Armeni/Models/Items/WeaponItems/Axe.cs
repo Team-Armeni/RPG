@@ -3,7 +3,7 @@ using System;
 
 namespace RPGArmeni.Models.Items.WeaponItems
 {
-    //[Weapon]
+    [Weapon]
     public class Axe : WeaponItem
     {
         private const char AxeSymbol = 'A';
