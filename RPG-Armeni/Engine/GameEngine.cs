@@ -14,6 +14,7 @@
     using RPGArmeni.Models.Items;
     using RPGArmeni.Engine.Factories;
     using RPGArmeni.Engine.Commands;
+    using RPGArmeni.Models;
 
     public class GameEngine : IGameEngine
     {
@@ -23,14 +24,32 @@
         private const int InitialNumberOfEnemies = 20;
         private const int InitialNumberOfPotions = 20;
 
-        private readonly IList<GameObject> characters;
+        private readonly IList<IGameObject> characters;
         private readonly IList<IGameItem> items;
         private IPlayer player;
+        private IMap map;
 
         public GameEngine()
         {
-            this.characters = new List<GameObject>();
+            this.characters = new List<IGameObject>();
             this.items = new List<IGameItem>();
+            this.Map = new Map(MapHeight, MapWidth);
+        }
+
+        public IEnumerable<IGameObject> Characters
+        {
+            get
+            {
+                return this.characters;
+            }
+        }
+
+        public IEnumerable<IGameItem> Items
+        {
+            get
+            {
+                return this.items;
+            }
         }
 
         public bool IsRunning { get; private set; }
@@ -79,7 +98,8 @@
                     currentCommand.Execute(commandArgs);
                     break;
                 case "map":
-                    this.PrintMap();
+                    currentCommand = new PrintMapCommand(this);
+                    currentCommand.Execute(commandArgs);
                     break;
                 case "left":
                 case "right":
@@ -88,10 +108,9 @@
                     this.MovePlayer(command);
                     break;
                 case "status":
-                    this.ShowStatus();
+                    currentCommand = new PlayerStatusCommand(this);
+                    currentCommand.Execute(commandArgs);
                     break;
-                    //ConsoleRenderer.WriteLine("Healed!");
-                    //break;
                 case "clear":
                     ConsoleRenderer.Clear();
                     break;
@@ -102,15 +121,6 @@
                 default:
                     throw new ArgumentException("Unknown command", "command");
             }
-        }
-
-        private void ShowStatus()
-        {
-            ConsoleRenderer.WriteLine(this.player.ToString());
-
-            ConsoleRenderer.WriteLine(
-                "Number of enemies left: {0}", 
-                this.characters.Count);
         }
 
         private void MovePlayer(string command)
@@ -168,54 +178,6 @@
                 }
                 
             }
-        }
-
-        private void PrintMap()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            for (int row = 0; row < MapHeight; row++)
-            {
-                for (int col = 0; col < MapWidth; col++)
-                {
-                    if (this.player.Position.X == col && this.player.Position.Y == row)
-                    {
-                        sb.Append('P');
-                        continue;
-                    }
-
-                    var character =
-                         this.characters
-                         .Cast<ICharacter>()
-                         .FirstOrDefault(c => c.Position.X == col 
-                             && c.Position.Y == row 
-                             && c.Health > 0);
-
-                    var item = this.items
-                        .Cast<IGameItem>()
-                        .FirstOrDefault(c => c.Position.X == col 
-                            && c.Position.Y == row 
-                            && c.ItemState == ItemState.Available);
-
-                    if (character == null && item == null)
-                    {
-                        sb.Append('.');
-                    }
-                    else if (character != null)
-                    {
-                        var ch = character as GameObject;
-                        sb.Append(ch.ObjectSymbol);
-                    }
-                    else
-                    {
-                        sb.Append(item.ObjectSymbol);
-                    }
-                }
-
-                sb.AppendLine();
-            }
-
-            ConsoleRenderer.WriteLine(sb.ToString());
         }
 
         private string GetPlayerName()
@@ -323,6 +285,24 @@
                 .CreateInstance(type, new Position(currentX, currentY)) as GameObject;
 
             return character;
+        }
+
+        public IPlayer Player
+        {
+            get { return this.player; }
+            private set
+            {
+                this.player = value;
+            }
+        }
+
+        public IMap Map
+        {
+            get { return this.map; }
+            private set
+            {
+                this.map = value;
+            }
         }
     }
 }

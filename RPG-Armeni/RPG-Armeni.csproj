@@ -47,6 +47,8 @@
     <Compile Include="Engine\Commands\CreateItemCommand.cs" />
     <Compile Include="Engine\Commands\GameCommand.cs" />
     <Compile Include="Engine\Commands\HelpCommand.cs" />
+    <Compile Include="Engine\Commands\PlayerStatusCommand.cs" />
+    <Compile Include="Engine\Commands\PrintMapCommand.cs" />
     <Compile Include="Engine\Factories\CharacterFactory.cs" />
     <Compile Include="Engine\Factories\ItemFactory.cs" />
     <Compile Include="Engine\Factories\PlayerFactory.cs" />
@@ -57,6 +59,7 @@
     <Compile Include="Exceptions\NoHealthPotionsException.cs" />
     <Compile Include="Exceptions\NoSlotAvailableException.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
+    <Compile Include="Interfaces\IMap.cs" />
     <Compile Include="Interfaces\IRace.cs" />
     <Compile Include="Interfaces\ISlot.cs" />
     <Compile Include="Interfaces\IContainer.cs" />
@@ -100,6 +103,7 @@
     <Compile Include="Models\Items\Item.cs" />
     <Compile Include="Models\Items\ItemState.cs" />
     <Compile Include="Models\Items\WeaponItems\WeaponItem.cs" />
+    <Compile Include="Models\Map.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="ArmeniMainProject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
