@@ -89,13 +89,13 @@ namespace RPGArmeni.Engine.Commands
 			Console.ForegroundColor = ConsoleColor.Gray;
 			for (int i = 0; i < skullHeight; i++)
 			{
-				Console.Write(centerPadding);
+				ConsoleRenderer.Write(centerPadding);
 				ConsoleRenderer.WriteLine(deathScreen[i]);
 			}
 			Console.ForegroundColor = ConsoleColor.Red;
 			for (int i = skullHeight; i < deathScreen.Length; i++)
 			{
-				Console.Write(centerPadding);
+				ConsoleRenderer.Write(centerPadding);
 				ConsoleRenderer.WriteLine(deathScreen[i]);
 			}
 
