@@ -91,7 +91,7 @@
             }
         }
 
-        public bool IsRunning { get; private set; }
+        public bool IsRunning { get; set; }
 
         public void Run()
         {
@@ -169,38 +169,6 @@
             }
         }
 
-        private void MovePlayer(string command)
-        {
-            this.player.Move(command);
-
-            ICharacter enemy =
-                this.characters.Cast<ICharacter>()
-                .FirstOrDefault(
-                    e => e.Position.X == this.player.Position.X 
-                        && e.Position.Y == this.player.Position.Y 
-                        && e.Health > 0);
-
-            if (enemy != null)
-            {
-                this.EnterBattle(enemy);
-                return;
-            }
-
-            IGameItem healthPotion =
-                this.items.Cast<IGameItem>()
-                .FirstOrDefault(
-                    e => e.Position.X == this.player.Position.X 
-                        && e.Position.Y == this.player.Position.Y 
-                        && e.ItemState == ItemState.Available);
-
-            if (healthPotion != null)
-            {
-                //this.player.AddItemToInventory(beer);
-                healthPotion.ItemState = ItemState.Collected;
-                ConsoleRenderer.WriteLine("Health potion collected!");
-            }
-        }
-
         private void EnterBattle(ICharacter enemy)
         {
             while (true) //Fighting until one of them is dead. No one is running from combat.
@@ -245,6 +213,16 @@
         public void AddEnemy(ICharacter enemyToBeAdded)
         {
             this.characters.Add(enemyToBeAdded);
+        }
+
+        public void RemoveItem(IGameItem itemToBeRemoved)
+        {
+            this.items.Remove(itemToBeRemoved);
+        }
+
+        public void RemoveEnemy(ICharacter enemyToBeRemoved)
+        {
+            this.characters.Remove(enemyToBeRemoved);
         }
     }
 }

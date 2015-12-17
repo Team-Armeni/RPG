@@ -21,10 +21,10 @@
 
             this.Engine.Player.Move(direction);
 
-            IGameObject currentEnemy = this.Engine
+            ICharacter currentEnemy = this.Engine
                 .Characters
                 .FirstOrDefault(x => x.Position.X == this.Engine.Player.Position.X 
-                    && x.Position.Y == this.Engine.Player.Position.Y);
+                    && x.Position.Y == this.Engine.Player.Position.Y) as ICharacter;
 
             if (currentEnemy != null)
             {
@@ -46,9 +46,33 @@
             }
         }
 
-        private void EnterBattle(IGameObject currentEnemy)
+        private void EnterBattle(ICharacter currentEnemy)
         {
-            throw new NotImplementedException();
+            ConsoleRenderer.WriteLine("An enemy {0} is approaching. Prepare for battle!", currentEnemy.GetType().Name);
+            while (true)
+            {
+                this.Engine.Player.Attack(currentEnemy);
+                ConsoleRenderer.WriteLine("You smash the {0} for {1} damage!",
+                    currentEnemy.GetType().Name, this.Engine.Player.Damage);
+
+                if (currentEnemy.Health <= 0)
+                {
+                    ConsoleRenderer.WriteLine("Enemy killed!");
+                    this.Engine.RemoveEnemy(currentEnemy);
+                    return;
+                }
+
+                currentEnemy.Attack(this.Engine.Player);
+                ConsoleRenderer.WriteLine("The {0} hits you for {1}",
+                    currentEnemy.GetType().Name, currentEnemy.Damage);
+
+                if (this.Engine.Player.Health <= 0)
+                {
+                    this.Engine.IsRunning = false;
+                    ConsoleRenderer.WriteLine("You died!");
+                    return;
+                }
+            }
         }
 
         public override void Execute()
