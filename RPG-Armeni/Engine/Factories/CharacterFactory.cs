@@ -15,7 +15,7 @@ namespace RPGArmeni.Engine.Factories
         {
         }
 
-        public CharacterFactory Instance
+        public static CharacterFactory Instance
         {
             get
             {

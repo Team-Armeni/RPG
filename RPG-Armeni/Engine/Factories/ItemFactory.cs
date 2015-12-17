@@ -37,7 +37,7 @@
                 .Any(enemy => enemy.Position.X == currentX && enemy.Position.Y == currentY);
 
             bool containsItem = this.Engine.Items
-                .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
+                .Any(item => item.Position.X == currentX && item.Position.Y == currentY);
 
             while (containsEnemy || containsItem)
             {
@@ -70,7 +70,9 @@
                     throw new ArgumentOutOfRangeException("Invalid potion type.");
             }
 
-            return new HealthPotion(new Position(currentX, currentY), potionSize);
+            IGameItem currentItem = new HealthPotion(new Position(currentX, currentY), potionSize);
+            this.Engine.Map.Matrix[currentX, currentY] = currentItem.ObjectSymbol;
+            return currentItem;
         }
     }
 }
