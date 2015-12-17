@@ -97,6 +97,7 @@
 
             IGameCommand spawnItems = new SpawnItemsCommand(this);
             spawnItems.Execute();
+            Console.WriteLine("Type \"help\" to get playing instructions.");
 
             while (this.IsRunning)
             {
@@ -126,7 +127,7 @@
         protected virtual void ExecuteCommand(string command)
         {
             IGameCommand currentCommand;
-            string[] commandArgs = command.Split(new char[]{ ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] commandArgs = command.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             switch (command)
             {
                 case "help":
@@ -183,7 +184,7 @@
                     ConsoleRenderer.WriteLine("You died!");
                     return;
                 }
-                
+
             }
         }
 
