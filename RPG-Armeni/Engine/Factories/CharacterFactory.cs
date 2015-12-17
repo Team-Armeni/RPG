@@ -30,7 +30,7 @@ namespace RPGArmeni.Engine.Factories
 
         public IGameEngine Engine { get; set; }
 
-        public ICharacter CreateCharacter(string[] args)
+        public ICharacter CreateCharacter()
         {
             throw new NotImplementedException();
         }

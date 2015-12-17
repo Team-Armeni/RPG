@@ -98,7 +98,8 @@
             this.IsRunning = true;
             this.player = PlayerFactory.Instance.CreatePlayer();
 
-            //this.PopulateEnemies();
+            IGameCommand spawnEnemies = new SpawnEnemiesCommand(this);
+            spawnEnemies.Execute();
 
             IGameCommand spawnItems = new SpawnItemsCommand(this);
             spawnItems.Execute();
