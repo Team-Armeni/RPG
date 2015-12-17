@@ -8,7 +8,7 @@
     {
         public static void Main()
         {
-            GameEngine engine = new GameEngine();
+            IGameEngine engine = new GameEngine();
 
             engine.Run();
         }

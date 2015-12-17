@@ -13,16 +13,15 @@
     using RPGArmeni.UI;
     using RPGArmeni.Models.Items;
     using RPGArmeni.Engine.Factories;
+    using RPGArmeni.Engine.Commands;
 
-    public class GameEngine
+    public class GameEngine : IGameEngine
     {
         public const int MapWidth = 20;
         public const int MapHeight = 20;
 
         private const int InitialNumberOfEnemies = 20;
         private const int InitialNumberOfPotions = 20;
-
-        private static readonly Random Rand = new Random();
 
         private readonly IList<GameObject> characters;
         private readonly IList<IGameItem> items;
@@ -71,10 +70,13 @@
 
         private void ExecuteCommand(string command)
         {
+            IGameCommand currentCommand;
+            string[] commandArgs = command.Split(new char[]{ ' ' }, StringSplitOptions.RemoveEmptyEntries);
             switch (command)
             {
                 case "help":
-                    this.ExecuteHelpCommand();
+                    currentCommand = new HelpCommand(this);
+                    currentCommand.Execute(commandArgs);
                     break;
                 case "map":
                     this.PrintMap();
@@ -216,13 +218,6 @@
             ConsoleRenderer.WriteLine(sb.ToString());
         }
 
-        private void ExecuteHelpCommand()
-        {
-            string helpInfo = File.ReadAllText("../../HelpInfo.txt");
-
-            ConsoleRenderer.WriteLine(helpInfo);
-        }
-
         private string GetPlayerName()
         {
             ConsoleRenderer.WriteLine("Please enter your name:");
@@ -248,8 +243,8 @@
 
         private IGameItem CreateItem()
         {
-            int currentX = Rand.Next(1, MapWidth);
-            int currentY = Rand.Next(1, MapHeight);
+            int currentX = RandomGenerator.GenerateNumber(1, MapWidth);
+            int currentY = RandomGenerator.GenerateNumber(1, MapHeight);
 
             bool containsEnemy = this.characters
                 .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
@@ -259,8 +254,8 @@
 
             while (containsEnemy || containsBeer)
             {
-                currentX = Rand.Next(1, MapWidth);
-                currentY = Rand.Next(1, MapHeight);
+                currentX = RandomGenerator.GenerateNumber(1, MapWidth);
+                currentY = RandomGenerator.GenerateNumber(1, MapHeight);
 
                 containsEnemy = this.characters
                 .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
@@ -269,7 +264,7 @@
                 .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
             }
 
-            int beerType = Rand.Next(0, 3);
+            int beerType = RandomGenerator.GenerateNumber(0, 3);
 
             HealthPotionSize potionSize;
 
@@ -302,16 +297,16 @@
 
         private GameObject CreateEnemy()
         {
-            int currentX = Rand.Next(1, MapWidth);
-            int currentY = Rand.Next(1, MapHeight);
+            int currentX = RandomGenerator.GenerateNumber(1, MapWidth);
+            int currentY = RandomGenerator.GenerateNumber(1, MapHeight);
 
             bool containsEnemy = this.characters
                 .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
 
             while (containsEnemy)
             {
-                currentX = Rand.Next(1, MapWidth);
-                currentY = Rand.Next(1, MapHeight);
+                currentX = RandomGenerator.GenerateNumber(1, MapWidth);
+                currentY = RandomGenerator.GenerateNumber(1, MapHeight);
 
                 containsEnemy = this.characters
                 .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
@@ -322,7 +317,7 @@
                     .Any(a => a.AttributeType == typeof(EnemyAttribute)))
                     .ToArray();
 
-            var type = enemyTypes[Rand.Next(0, enemyTypes.Length)];
+            var type = enemyTypes[RandomGenerator.GenerateNumber(0, enemyTypes.Length)];
 
             GameObject character = Activator
                 .CreateInstance(type, new Position(currentX, currentY)) as GameObject;

@@ -4,6 +4,6 @@
 
     public interface IGameEngine
     {
-
+        void Run();
     }
 }

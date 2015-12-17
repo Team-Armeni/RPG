@@ -84,7 +84,7 @@
         private IRace GetPlayerRace()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            ConsoleRenderer.Write("Choose a race : ");
+            ConsoleRenderer.WriteLine("Choose a race : ");
             Console.ResetColor();
 
             for (int i = 0; i < this.availableRaces.Count; i++)

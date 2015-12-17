@@ -46,6 +46,7 @@
     <Compile Include="Engine\Commands\CreateCharacterCommand.cs" />
     <Compile Include="Engine\Commands\CreateItemCommand.cs" />
     <Compile Include="Engine\Commands\GameCommand.cs" />
+    <Compile Include="Engine\Commands\HelpCommand.cs" />
     <Compile Include="Engine\Factories\CharacterFactory.cs" />
     <Compile Include="Engine\Factories\ItemFactory.cs" />
     <Compile Include="Engine\Factories\PlayerFactory.cs" />
