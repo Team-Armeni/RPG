@@ -147,7 +147,8 @@
                 case "right":
                 case "up":
                 case "down":
-                    this.MovePlayer(command);
+                    currentCommand = new MovePlayerCommand(this);
+                    currentCommand.Execute(commandArgs);
                     break;
                 case "status":
                     currentCommand = new PlayerStatusCommand(this);
