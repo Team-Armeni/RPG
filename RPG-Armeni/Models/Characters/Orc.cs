@@ -3,7 +3,7 @@
     using Attributes;
 
     [Race]
-    public class Orc : Race
+    public class Orc : Race //A playable race character.
     {
         private const int OrcBaseDamage = 30;
         private const int OrcBaseHealth = 150;

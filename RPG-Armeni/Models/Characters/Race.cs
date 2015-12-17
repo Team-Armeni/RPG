@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RPGArmeni.Models.Characters
 {
-    public abstract class Race : IRace
+    public abstract class Race : IRace //A base abstract class for playable races. The player picks one.
     {
         private int health;
         private int damage;

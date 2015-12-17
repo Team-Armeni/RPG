@@ -16,11 +16,11 @@
 
     public class GameEngine
     {
-        public const int MapWidth = 5;
-        public const int MapHeight = 5;
+        public const int MapWidth = 20;
+        public const int MapHeight = 20;
 
         private const int InitialNumberOfEnemies = 2;
-        private const int InitialNumberOfBeers = 5;
+        private const int InitialNumberOfPotions = 5;
 
         private static readonly Random Rand = new Random();
 
@@ -64,7 +64,7 @@
                 if (this.characters.Count == 0)
                 {
                     this.IsRunning = false;
-                    ConsoleRenderer.WriteLine("Valar morgulis!");
+                    ConsoleRenderer.WriteLine("All enemies are dead. Congratulations!");
                 }
             }
         }
@@ -95,7 +95,7 @@
                     break;
                 case "exit":
                     this.IsRunning = false;
-                    ConsoleRenderer.WriteLine("Bye, noob!");
+                    ConsoleRenderer.WriteLine("Good Bye! Do come again to play this great game!");
                     break;
                 default:
                     throw new ArgumentException("Unknown command", "command");
@@ -128,18 +128,18 @@
                 return;
             }
 
-            IGameItem beer =
+            IGameItem healthPotion =
                 this.items.Cast<IGameItem>()
                 .FirstOrDefault(
                     e => e.Position.X == this.player.Position.X 
                         && e.Position.Y == this.player.Position.Y 
                         && e.ItemState == ItemState.Available);
 
-            if (beer != null)
+            if (healthPotion != null)
             {
                 //this.player.AddItemToInventory(beer);
-                beer.ItemState = ItemState.Collected;
-                ConsoleRenderer.WriteLine("Beer collected!");
+                healthPotion.ItemState = ItemState.Collected;
+                ConsoleRenderer.WriteLine("Health potion collected!");
             }
         }
 
@@ -234,7 +234,7 @@
 
         private void PopulateItems()
         {
-            for (int i = 0; i < InitialNumberOfBeers; i++)
+            for (int i = 0; i < InitialNumberOfPotions; i++)
             {
                 IGameItem beer = this.CreateItem();
                 this.items.Add(beer);

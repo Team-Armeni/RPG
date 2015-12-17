@@ -42,7 +42,7 @@
             string name = this.GetPlayerName();
             IRace playerRace = this.GetPlayerRace();
             IPosition startingPosition = new Position(0, 0);
-            char playerSymbol = 'X';
+            char playerSymbol = 'P';
 
             return new Player(startingPosition, playerSymbol, name, playerRace);
 
