@@ -123,8 +123,26 @@
             {
                 throw new NoHealthPotionsException("There are no health potions left in the backpack.");
             }
-
+            int maximumHealthRestore = this.Health;
             this.Health += (healthPotionSlot.GameItem as HealthPotion).HealthRestore;
+            if (this.Health > maximumHealthRestore) //Healing potions only restore health to the player's current Health value.
+            {
+                this.Health = maximumHealthRestore;
+            }
+            this.BackPack.RemoveItem(healthPotionSlot);
+        }
+
+        public void DrinkHealthBonusPotion()
+        {
+            ISlot healthPotionSlot = this.BackPack
+                .SlotList
+                .FirstOrDefault(x => x is HealthBonusPotion);
+
+            if (healthPotionSlot == null)
+            {
+                throw new NoHealthPotionsException("There are no health potions left in the backpack.");
+            }
+            this.Health += (healthPotionSlot.GameItem as HealthBonusPotion).HealthBonus;
             this.BackPack.RemoveItem(healthPotionSlot);
         }
 
