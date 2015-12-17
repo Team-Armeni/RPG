@@ -7,12 +7,14 @@
     using Interfaces;
     using Items;
     using RPGArmeni.Models.Containers;
+    using System.Text;
 
     public class Player : Character, IPlayer
     {
         private const int PlayerStartingX = 0;
         private const int PlayerStartingY = 0;
         private string name;
+        private int defensiveBonus;
         private IInventory inventory;
         private IContainer backPack;
         private IRace race;
@@ -43,6 +45,20 @@
                 this.name = value;
             }
         }
+
+        public int DefensiveBonus
+        {
+            get { return this.defensiveBonus; }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Player defensive bonus.", "Defensive bonus value cannot be negative.");
+                }
+                this.defensiveBonus = value;
+            }
+        }
+        
         public IRace Race
         {
             get { return this.race; }
@@ -114,7 +130,10 @@
 
         public override string ToString()
         {
-            return string.Format("");
+            StringBuilder output = new StringBuilder();
+            output.AppendLine("Player stats:");
+            output.AppendFormat("Health: {0}, Damage: {1}, Defensive Bonus: {2}", this.Health, this.Damage, this.DefensiveBonus);
+            return output.ToString();
         }
     }
 }

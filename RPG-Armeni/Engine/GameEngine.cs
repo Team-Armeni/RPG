@@ -64,7 +64,7 @@
                 if (this.characters.Count == 0)
                 {
                     this.IsRunning = false;
-                    ConsoleRenderer.WriteLine("All enemies are dead. Congratulations!");
+                    ConsoleRenderer.WriteLine("All your enemies are dead. Congratulations! You are the only one left on earth.");
                 }
             }
         }
@@ -88,8 +88,8 @@
                 case "status":
                     this.ShowStatus();
                     break;
-                    ConsoleRenderer.WriteLine("Healed!");
-                    break;
+                    //ConsoleRenderer.WriteLine("Healed!");
+                    //break;
                 case "clear":
                     ConsoleRenderer.Clear();
                     break;
@@ -145,21 +145,26 @@
 
         private void EnterBattle(ICharacter enemy)
         {
-            this.player.Attack(enemy);
-
-            if (enemy.Health <= 0)
+            while (true) //Fighting until one of them is dead. No one is running from combat.
             {
-                ConsoleRenderer.WriteLine("Enemy killed!");
-                this.characters.Remove(enemy as GameObject);
-                return;
-            }
+                this.player.Attack(enemy);
 
-            enemy.Attack(this.player);
+                if (enemy.Health <= 0)
+                {
+                    ConsoleRenderer.WriteLine("Enemy killed!");
+                    this.characters.Remove(enemy as GameObject);
+                    return;
+                }
 
-            if (this.player.Health <= 0)
-            {
-                this.IsRunning = false;
-                ConsoleRenderer.WriteLine("You dead!");
+                enemy.Attack(this.player);
+
+                if (this.player.Health <= 0)
+                {
+                    this.IsRunning = false;
+                    ConsoleRenderer.WriteLine("You died!");
+                    return;
+                }
+                
             }
         }
 

@@ -6,5 +6,6 @@
     {
         string Name { get; }
         IRace Race { get; }
+        int DefensiveBonus { get; }
     }
 }

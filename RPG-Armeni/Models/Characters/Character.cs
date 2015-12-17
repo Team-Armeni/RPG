@@ -33,6 +33,10 @@
             get { return this.damage; }
             protected set
             {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Character damage", "Damage value cannot be negative.");
+                }
                 this.damage = value;
             }
         }
