@@ -224,15 +224,6 @@
             }
         }
 
-        private void PopulateEnemies()
-        {
-            for (int i = 0; i < NumberOfEnemies; i++)
-            {
-                GameObject enemy = this.CreateEnemy();
-                this.characters.Add(enemy);
-            }
-        }
-
         private GameObject CreateEnemy()
         {
             int currentX = RandomGenerator.GenerateNumber(1, MapWidth);
