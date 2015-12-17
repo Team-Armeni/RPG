@@ -92,24 +92,56 @@
             }
         }
 
+        public IGameEngine Engine { get; set; }
+
         public void Move(string direction)
         {
             switch (direction)
             {
                 case "up":
-                    this.Position = new Position(this.Position.X, this.Position.Y - 1);
+                    if (this.Position.X - 1 < 0)
+                    {
+                        throw new ObjectOutOfBoundsException("You have reached the border of the map.");
+                    }
+
+                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = '.';
+                    this.Position = new Position(this.Position.X - 1, this.Position.Y);
+                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
                     break;
                 case "down":
-                    this.Position = new Position(this.Position.X, this.Position.Y + 1);
+                    if (this.Position.X + 1 >= this.Engine.Map.Height)
+                    {
+                        throw new ObjectOutOfBoundsException("You have reached the border of the map.");
+                    }
+
+                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = '.';
+                    this.Position = new Position(this.Position.X + 1, this.Position.Y);
+                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
                     break;
                 case "right":
-                    this.Position = new Position(this.Position.X + 1, this.Position.Y);
+                    if (this.Position.Y + 1 >= this.Engine.Map.Width)
+                    {
+                        throw new ObjectOutOfBoundsException("You have reached the border of the map.");
+                    }
+
+                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = '.';
+                    this.Position = new Position(this.Position.X, this.Position.Y + 1);
+                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
                     break;
                 case "left":
-                    this.Position = new Position(this.Position.X - 1, this.Position.Y);
+                    if (this.Position.Y - 1 < 0)
+                    {
+                        throw new ObjectOutOfBoundsException("You have reached the border of the map.");
+                    }
+
+                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = '.';
+                    this.Position = new Position(this.Position.X, this.Position.Y - 1);
+                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
                     break;
                 default:
-                    throw new ArgumentException("Invalid direction.", "direction");
+                    {
+                        throw new ArgumentException("Invalid direction.");
+                    }
             }
         }
 

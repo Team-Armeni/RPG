@@ -2,6 +2,7 @@
 {
     using RPGArmeni.Interfaces;
     using RPGArmeni.Models.Items;
+    using RPGArmeni.UI;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -19,10 +20,11 @@
             string direction = args[0];
 
             this.Engine.Player.Move(direction);
+
             IGameObject currentEnemy = this.Engine
                 .Characters
-                .FirstOrDefault(x => x.Position.X == this.Engine.Player.Position.X &&
-                x.Position.Y == this.Engine.Player.Position.Y);
+                .FirstOrDefault(x => x.Position.X == this.Engine.Player.Position.X 
+                    && x.Position.Y == this.Engine.Player.Position.Y);
 
             if (currentEnemy != null)
             {
@@ -30,17 +32,16 @@
                 return;
             }
 
-            IGameItem healthPotion =
-                this.Engine.Items
-                .FirstOrDefault(
-                    e => e.Position.X == this.Engine.Player.Position.X
+            IGameItem currentItem = this.Engine
+                .Items
+                .FirstOrDefault(e => e.Position.X == this.Engine.Player.Position.X
                         && e.Position.Y == this.Engine.Player.Position.Y
                         && e.ItemState == ItemState.Available);
 
-            if (healthPotion != null)
+            if (currentItem != null)
             {
-                //this.player.AddItemToInventory(beer);
-                healthPotion.ItemState = ItemState.Collected;
+                currentItem.ItemState = ItemState.Collected;
+                this.Engine.Player.Inventory.BackPack.LootItem(currentItem);
                 ConsoleRenderer.WriteLine("Health potion collected!");
             }
         }

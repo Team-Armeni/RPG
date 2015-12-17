@@ -97,6 +97,7 @@
         {
             this.IsRunning = true;
             this.player = PlayerFactory.Instance.CreatePlayer();
+            this.player.Engine = this;
 
             IGameCommand spawnEnemies = new SpawnEnemiesCommand(this);
             spawnEnemies.Execute();
