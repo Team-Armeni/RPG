@@ -66,19 +66,21 @@
             {
                 for (int j = 0; j < this.Engine.Map.Width; j++)
                 {
-                    if (this.Engine.Map.Matrix[i, j] != '.')
+                    if (this.Engine.Map.Matrix[i, j] == 'H')
                     {
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Write(this.Engine.Map.Matrix[i, j]);
-                        Console.ForegroundColor = ConsoleColor.Red;
                     }
                     else
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write(this.Engine.Map.Matrix[i, j]); 
                     }
                 }
+
                 Console.WriteLine();
             }
+
             Console.ResetColor();
         }
 

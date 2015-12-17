@@ -33,22 +33,14 @@
             int currentX = RandomGenerator.GenerateNumber(0, this.Engine.Map.Height);
             int currentY = RandomGenerator.GenerateNumber(0, this.Engine.Map.Width);
 
-            bool containsEnemy = this.Engine.Characters
-                .Any(enemy => enemy.Position.X == currentX && enemy.Position.Y == currentY);
+            bool isEmptySpot = this.Engine.Map.Matrix[currentX, currentY] == '.';
 
-            bool containsItem = this.Engine.Items
-                .Any(item => item.Position.X == currentX && item.Position.Y == currentY);
-
-            while (containsEnemy || containsItem)
+            while (!isEmptySpot)
             {
                 currentX = RandomGenerator.GenerateNumber(0, this.Engine.Map.Height);
                 currentY = RandomGenerator.GenerateNumber(0, this.Engine.Map.Width);
 
-                containsEnemy = this.Engine.Characters
-                .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
-
-                containsItem = this.Engine.Items
-                .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
+                isEmptySpot = this.Engine.Map.Matrix[currentX, currentY] == '.';
             }
 
             int potionType = RandomGenerator.GenerateNumber(0, 3);

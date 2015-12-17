@@ -223,60 +223,6 @@
             }
         }
 
-        //private void PopulateItems()
-        //{
-        //    for (int i = 0; i < numberOfItems; i++)
-        //    {
-        //        IGameItem beer = this.CreateItem();
-        //        this.items.Add(beer);
-        //    }
-        //}
-
-        private IGameItem CreateItem()
-        {
-            int currentX = RandomGenerator.GenerateNumber(1, MapWidth);
-            int currentY = RandomGenerator.GenerateNumber(1, MapHeight);
-
-            bool containsEnemy = this.characters
-                .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
-
-            bool containsBeer = this.items
-                .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
-
-            while (containsEnemy || containsBeer)
-            {
-                currentX = RandomGenerator.GenerateNumber(1, MapWidth);
-                currentY = RandomGenerator.GenerateNumber(1, MapHeight);
-
-                containsEnemy = this.characters
-                .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
-
-                containsBeer = this.items
-                .Any(e => e.Position.X == currentX && e.Position.Y == currentY);
-            }
-
-            int beerType = RandomGenerator.GenerateNumber(0, 3);
-
-            HealthPotionSize potionSize;
-
-            switch (beerType)
-            {
-                case 0:
-                    potionSize = HealthPotionSize.Minor;
-                    break;
-                case 1:
-                    potionSize = HealthPotionSize.Normal;
-                    break;
-                case 2:
-                    potionSize = HealthPotionSize.Major;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("potionType", "Invalid potion type.");
-            }
-
-            return new HealthPotion(new Position(currentX, currentY), potionSize);
-        }
-
         private void PopulateEnemies()
         {
             for (int i = 0; i < NumberOfEnemies; i++)
