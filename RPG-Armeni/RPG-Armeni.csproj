@@ -43,8 +43,6 @@
   <ItemGroup>
     <Compile Include="Attributes\EnemyAttribute.cs" />
     <Compile Include="Attributes\RaceAttribute.cs" />
-    <Compile Include="Engine\Commands\CreateCharacterCommand.cs" />
-    <Compile Include="Engine\Commands\CreateItemCommand.cs" />
     <Compile Include="Engine\Commands\GameCommand.cs" />
     <Compile Include="Engine\Commands\HelpCommand.cs" />
     <Compile Include="Engine\Commands\PlayerStatusCommand.cs" />
