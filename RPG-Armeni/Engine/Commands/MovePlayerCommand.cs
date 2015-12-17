@@ -83,7 +83,7 @@ namespace RPGArmeni.Engine.Commands
 			string centerPadding = new string(' ', Console.BufferWidth / 4);
 
 			var deathScreen = File.ReadAllLines("../../UI/Utility/GameOver.txt");
-			Console.Clear();
+			//Console.Clear();
 			Console.CursorVisible = false;
 
 			Console.ForegroundColor = ConsoleColor.Gray;
