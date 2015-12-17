@@ -18,7 +18,7 @@
 
     public class GameEngine : IGameEngine
     {
-        public const int MapWidth = 20;
+        public const int MapWidth = 50;
         public const int MapHeight = 20;
 
         private const int InitialNumberOfEnemies = 20;
@@ -34,6 +34,7 @@
             this.characters = new List<IGameObject>();
             this.items = new List<IGameItem>();
             this.Map = new Map(MapHeight, MapWidth);
+            this.InitializeMap();
         }
 
         public IEnumerable<IGameObject> Characters
@@ -49,6 +50,24 @@
             get
             {
                 return this.items;
+            }
+        }
+
+        public IPlayer Player
+        {
+            get { return this.player; }
+            private set
+            {
+                this.player = value;
+            }
+        }
+
+        public IMap Map
+        {
+            get { return this.map; }
+            private set
+            {
+                this.map = value;
             }
         }
 
@@ -119,7 +138,9 @@
                     ConsoleRenderer.WriteLine("Good Bye! Do come again to play this great game!");
                     break;
                 default:
-                    throw new ArgumentException("Unknown command", "command");
+                    {
+                        throw new ArgumentException("Unknown command");
+                    }
             }
         }
 
@@ -178,20 +199,6 @@
                 }
                 
             }
-        }
-
-        private string GetPlayerName()
-        {
-            ConsoleRenderer.WriteLine("Please enter your name:");
-
-            string playerName = ConsoleInputReader.ReadLine();
-            while (string.IsNullOrWhiteSpace(playerName))
-            {
-                ConsoleRenderer.WriteLine("Player name cannot be empty. Please re-enter.");
-                playerName = ConsoleInputReader.ReadLine();
-            }
-
-            return playerName;
         }
 
         private void PopulateItems()
@@ -287,21 +294,14 @@
             return character;
         }
 
-        public IPlayer Player
+        private void InitializeMap()
         {
-            get { return this.player; }
-            private set
+            for (int i = 0; i < this.Map.Height; i++)
             {
-                this.player = value;
-            }
-        }
-
-        public IMap Map
-        {
-            get { return this.map; }
-            private set
-            {
-                this.map = value;
+                for (int j = 0; j < this.Map.Width; j++)
+                {
+                    this.Map.Matrix[i, j] = '.';
+                }
             }
         }
     }

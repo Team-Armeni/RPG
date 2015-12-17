@@ -11,5 +11,7 @@ namespace RPGArmeni.Interfaces
         int Width { get; }
 
         int Height { get; }
+
+        char[,] Matrix { get; }
     }
 }

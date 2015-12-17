@@ -11,13 +11,13 @@ namespace RPGArmeni.Models
     {
         private int height;
         private int width;
-        public readonly int[,] matrix;
+        private char[,] matrix;
 
         public Map(int height, int width)
         {
             this.Height = height;
             this.Width = width;
-            this.matrix = new int[this.Height, this.Width];
+            this.Matrix = new char[this.Height, this.Width];
         }
 
         public int Height
@@ -41,6 +41,16 @@ namespace RPGArmeni.Models
             private set
             {
                 this.width = value;
+            }
+        }
+
+
+        public char[,] Matrix
+        {
+            get { return this.matrix; }
+            private set
+            {
+                this.matrix = value;
             }
         }
     }
