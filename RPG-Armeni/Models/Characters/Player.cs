@@ -96,9 +96,13 @@
 
         public void Move(string direction)
         {
-            switch (direction)
+        }
+
+        public void Move(ConsoleKeyInfo directionKey)
+        {
+            switch (directionKey.Key)
             {
-                case "up":
+                case ConsoleKey.UpArrow: //"up":
                     if (this.Position.X - 1 < 0)
                     {
                         throw new ObjectOutOfBoundsException("You have reached the border of the map.");
@@ -108,7 +112,7 @@
                     this.Position = new Position(this.Position.X - 1, this.Position.Y);
                     this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
                     break;
-                case "down":
+                case ConsoleKey.DownArrow: //"down":
                     if (this.Position.X + 1 >= this.Engine.Map.Height)
                     {
                         throw new ObjectOutOfBoundsException("You have reached the border of the map.");
@@ -118,8 +122,8 @@
                     this.Position = new Position(this.Position.X + 1, this.Position.Y);
                     this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
                     break;
-                case "right":
-					if (this.Position.Y + 1 >= this.Engine.Map.Width)
+                case ConsoleKey.RightArrow: //"right":
+                    if (this.Position.Y + 1 >= this.Engine.Map.Width)
                     {
                         throw new ObjectOutOfBoundsException("You have reached the border of the map.");
                     }
@@ -128,7 +132,7 @@
                     this.Position = new Position(this.Position.X, this.Position.Y + 1);
                     this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
                     break;
-                case "left":
+                case ConsoleKey.LeftArrow: //"left":
                     if (this.Position.Y - 1 < 0)
                     {
                         throw new ObjectOutOfBoundsException("You have reached the border of the map.");
@@ -139,9 +143,9 @@
                     this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
                     break;
                 default:
-                    {
-                        throw new ArgumentException("Invalid direction.");
-                    }
+                {
+                    throw new ArgumentException("Invalid direction.");
+                }
             }
         }
 

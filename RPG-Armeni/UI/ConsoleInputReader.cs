@@ -8,5 +8,10 @@
         {
             return Console.ReadLine();
         }
+
+	    public static ConsoleKeyInfo ReadKey()
+	    {
+	        return Console.ReadKey();
+	    }
     }
 }

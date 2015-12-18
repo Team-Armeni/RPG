@@ -16,11 +16,16 @@ namespace RPGArmeni.Engine.Commands
 		{
 		}
 
-		public override void Execute(string[] args)
-		{
-			string direction = args[0];
+	    public override void Execute(string[] args)
+	    {
+	        
+	    }
 
-			this.Engine.Player.Move(direction);
+        public override void Execute(ConsoleKeyInfo directionKey)
+		{
+			//string direction = args[0];
+
+			this.Engine.Player.Move(directionKey);
 
 			ICharacter currentEnemy = this.Engine
 				.Characters

@@ -1,4 +1,6 @@
-﻿namespace RPGArmeni.Engine.Commands
+﻿using System;
+
+namespace RPGArmeni.Engine.Commands
 {
     using RPGArmeni.Interfaces;
 
@@ -24,6 +26,11 @@
         }
 
         public abstract void Execute(string[] args);
+
+	    public virtual void Execute(ConsoleKeyInfo directionKey)
+	    {
+	        
+	    }
 
         public abstract void Execute();
     }

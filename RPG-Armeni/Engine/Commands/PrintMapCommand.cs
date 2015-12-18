@@ -58,6 +58,11 @@
 
             //ConsoleRenderer.WriteLine(sb.ToString());
 
+            
+        }
+
+        public override void Execute()
+        {
             ConsoleRenderer.BackgroundColor(ConsoleColor.Green);
             ConsoleRenderer.ForegroundColor(ConsoleColor.Red);
             for (int i = 0; i < this.Engine.Map.Height; i++)
@@ -74,7 +79,7 @@
                         ConsoleRenderer.ForegroundColor(ConsoleColor.White);
                         ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
                     }
-                    else if((this.Engine.Map.Matrix[i, j] == 'A') || (this.Engine.Map.Matrix[i, j] == 'S'))
+                    else if ((this.Engine.Map.Matrix[i, j] == 'A') || (this.Engine.Map.Matrix[i, j] == 'S'))
                     {
                         ConsoleRenderer.ForegroundColor(ConsoleColor.DarkCyan);
                         ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
@@ -82,7 +87,7 @@
                     else
                     {
                         ConsoleRenderer.ForegroundColor(ConsoleColor.Red);
-                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString()); 
+                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
                     }
                 }
 
@@ -90,11 +95,6 @@
             }
 
             ConsoleRenderer.ResetColor();
-        }
-
-        public override void Execute()
-        {
-            throw new NotImplementedException();
         }
     }
 }

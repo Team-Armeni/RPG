@@ -12,13 +12,13 @@ The game objective is to kill all enemies on the map.
 Combat is automatic - when you reach an enemy, you fight until one of you is dead.
 
 Commands:
-type "help" - displays basic game info and commands;
-type backpack - displays all items in your backpack;
-type "map" - displays the map;
-type "left", "right", "up", "down" to move the player in the respective direction;
-type "status" - displays player status and enemies left;
-type "clear" - clears the screen;
-type "exit" - end the game;
+type "F1" - displays basic game info and commands;
+type "B" - displays all items in your backpack;
+type "M" - displays the map;
+type "LeftArrow", "RightArrow", "UpArrow", "DownArrow" to move the player in the respective direction;
+type "S" - displays player status and enemies left;
+type "C" - clears the screen;
+type "Escape" - end the game;
 
 Map legend:
 P - the player;

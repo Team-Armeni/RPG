@@ -101,11 +101,11 @@
 
             while (this.IsRunning)
             {
-                string command = ConsoleInputReader.ReadLine();
+                ConsoleKeyInfo commandKey = ConsoleInputReader.ReadKey();
 
                 try
                 {
-                    this.ExecuteCommand(command);
+                    this.ExecuteCommand(commandKey);
                 }
                 catch (ObjectOutOfBoundsException ex)
                 {
@@ -124,39 +124,47 @@
             }
         }
 
-        protected virtual void ExecuteCommand(string command)
+        protected virtual void ExecuteCommand(ConsoleKeyInfo commandKey)
         {
             IGameCommand currentCommand;
-            string[] commandArgs = command.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            switch (command)
+            //string[] commandArgs = command.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            switch (commandKey.Key)
             {
-                case "help":
+                case ConsoleKey.F1://"help":
                     currentCommand = new HelpCommand(this);
-                    currentCommand.Execute(commandArgs);
+                    currentCommand.Execute();
                     break;
-                case "map":
+                case ConsoleKey.M://"map":
+                    ConsoleRenderer.Clear();
                     currentCommand = new PrintMapCommand(this);
-                    currentCommand.Execute(commandArgs);
+                    currentCommand.Execute();
                     break;
-                case "left":
-                case "right":
-                case "up":
-                case "down":
+                case ConsoleKey.LeftArrow://"left":
+                case ConsoleKey.RightArrow://"right":
+                case ConsoleKey.UpArrow://"up":
+                case ConsoleKey.DownArrow://"down":
+                    ConsoleRenderer.Clear();
                     currentCommand = new MovePlayerCommand(this);
-                    currentCommand.Execute(commandArgs);
+                    currentCommand.Execute(commandKey);
+                    ConsoleRenderer.WriteLine(
+                        "Moved " + 
+                        commandKey.
+                        Key.ToString().ToLower().
+                        Substring(0, commandKey.Key.ToString().Length - 5));
+                    
                     break;
-                case "status":
+                case ConsoleKey.S://"status":
                     currentCommand = new PlayerStatusCommand(this);
-                    currentCommand.Execute(commandArgs);
+                    currentCommand.Execute();
                     break;
-                case "clear":
+                case ConsoleKey.C://"clear":
                     ConsoleRenderer.Clear();
                     break;
-                case "backpack":
+                case ConsoleKey.B: //"backpack":
                     currentCommand = new BackPackCommand(this);
                     currentCommand.Execute();
                     break;
-                case "exit":
+                case ConsoleKey.Escape: //"exit":
                     this.IsRunning = false;
                     ConsoleRenderer.WriteLine("Good Bye! Do come again to play this great game!");
                     break;

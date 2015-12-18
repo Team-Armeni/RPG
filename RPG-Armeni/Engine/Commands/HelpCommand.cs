@@ -14,14 +14,14 @@ namespace RPGArmeni.Engine.Commands
 
         public override void Execute(string[] args)
         {
-            string helpInfo = File.ReadAllText("../../UI/Utility/HelpInfo.txt");
-
-            ConsoleRenderer.WriteLine(helpInfo);
+            
         }
 
         public override void Execute()
         {
-            throw new NotImplementedException();
+            string helpInfo = File.ReadAllText("../../UI/Utility/HelpInfo.txt");
+
+            ConsoleRenderer.WriteLine(helpInfo);
         }
     }
 }
