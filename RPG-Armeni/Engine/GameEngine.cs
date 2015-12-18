@@ -101,7 +101,7 @@
 
             while (this.IsRunning)
             {
-                ConsoleKeyInfo commandKey = ConsoleInputReader.ReadKey();
+                IKeyInfo commandKey = new KeyInfo();
 
                 try
                 {
@@ -124,7 +124,7 @@
             }
         }
 
-        protected virtual void ExecuteCommand(ConsoleKeyInfo commandKey)
+        protected virtual void ExecuteCommand(IKeyInfo commandKey)
         {
             IGameCommand currentCommand;
             //string[] commandArgs = command.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);

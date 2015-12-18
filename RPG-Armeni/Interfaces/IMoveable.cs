@@ -6,6 +6,6 @@ namespace RPGArmeni.Interfaces
     {
         void Move(string direction);
 
-        void Move(ConsoleKeyInfo direction);
+        void Move(IKeyInfo direction);
     }
 }

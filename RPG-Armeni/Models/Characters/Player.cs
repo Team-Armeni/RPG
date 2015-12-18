@@ -98,7 +98,7 @@
         {
         }
 
-        public void Move(ConsoleKeyInfo directionKey)
+        public void Move(IKeyInfo directionKey)
         {
             switch (directionKey.Key)
             {

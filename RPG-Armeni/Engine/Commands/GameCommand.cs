@@ -27,7 +27,7 @@ namespace RPGArmeni.Engine.Commands
 
         public abstract void Execute(string[] args);
 
-	    public virtual void Execute(ConsoleKeyInfo directionKey)
+	    public virtual void Execute(IKeyInfo directionKey)
 	    {
 	        
 	    }

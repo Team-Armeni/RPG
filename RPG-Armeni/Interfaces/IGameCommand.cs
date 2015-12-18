@@ -8,7 +8,7 @@ namespace RPGArmeni.Interfaces
 
         void Execute(string[] args);
 
-        void Execute(ConsoleKeyInfo directionKey);
+        void Execute(IKeyInfo directionKey);
 
         void Execute();
     }

@@ -21,7 +21,7 @@ namespace RPGArmeni.Engine.Commands
 	        
 	    }
 
-        public override void Execute(ConsoleKeyInfo directionKey)
+        public override void Execute(IKeyInfo directionKey)
 		{
 			//string direction = args[0];
 

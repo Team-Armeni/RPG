@@ -63,6 +63,7 @@
     <Compile Include="Exceptions\NoHealthPotionsException.cs" />
     <Compile Include="Exceptions\NoSlotAvailableException.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
+    <Compile Include="Interfaces\IKeyInfo.cs" />
     <Compile Include="Interfaces\IMap.cs" />
     <Compile Include="Interfaces\IRace.cs" />
     <Compile Include="Interfaces\ISlot.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\ConsoleInputReader.cs" />
     <Compile Include="UI\ConsoleRenderer.cs" />
+    <Compile Include="UI\KeyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
