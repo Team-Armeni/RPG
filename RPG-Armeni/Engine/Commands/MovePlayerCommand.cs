@@ -8,6 +8,7 @@ namespace RPGArmeni.Engine.Commands
 	using System;
 	using System.Linq;
     using Exceptions;
+	using Commands;
 
 	public class MovePlayerCommand : GameCommand
 	{
@@ -64,6 +65,7 @@ namespace RPGArmeni.Engine.Commands
 				if (currentEnemy.Health <= 0)
 				{
 					ConsoleRenderer.WriteLine("Enemy killed!");
+					ConsoleRenderer.WriteLine($"Health Remaining: {this.Engine.Player.Health}");
 					this.Engine.RemoveEnemy(currentEnemy);
 					return;
 				}
@@ -88,36 +90,10 @@ namespace RPGArmeni.Engine.Commands
 				if (this.Engine.Player.Health <= 0)
 				{
 					this.Engine.IsRunning = false;
-					ShowGameOverScreen();
+					GameStateScreens.ShowGameOverScreen();
 					return;
 				}
 			}
-		}
-
-		private static void ShowGameOverScreen()
-		{
-			// todo: refactor this into another class
-
-			const int skullHeight = 19;
-			string centerPadding = new string(' ', Console.BufferWidth / 4);
-
-			var deathScreen = File.ReadAllLines("../../UI/Utility/GameOver.txt");
-			Console.CursorVisible = false;
-
-			Console.ForegroundColor = ConsoleColor.Gray;
-			for (int i = 0; i < skullHeight; i++)
-			{
-				ConsoleRenderer.Write(centerPadding);
-				ConsoleRenderer.WriteLine(deathScreen[i]);
-			}
-			Console.ForegroundColor = ConsoleColor.Red;
-			for (int i = skullHeight; i < deathScreen.Length; i++)
-			{
-				ConsoleRenderer.Write(centerPadding);
-				ConsoleRenderer.WriteLine(deathScreen[i]);
-			}
-
-			Console.ForegroundColor = ConsoleColor.White;
 		}
 
 		public override void Execute()
