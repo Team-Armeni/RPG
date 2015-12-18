@@ -1,4 +1,7 @@
-﻿namespace RPGArmeni
+﻿using System;
+using System.Text;
+
+namespace RPGArmeni
 {
 	using Engine;
 	using Interfaces;
@@ -8,6 +11,8 @@
 	{
 		public static void Main()
 		{
+			Console.OutputEncoding = Encoding.UTF8;
+
 			IGameEngine engine = new GameEngine();
 			ItemFactory.Instance.Engine = engine;
 			CharacterFactory.Instance.Engine = engine;

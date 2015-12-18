@@ -12,14 +12,14 @@ The game objective is to kill all enemies on the map.
 Combat is automatic - when you reach an enemy, you fight until one of you is dead.
 
 Controls:
-F1			displays basic game info and commands
-Arrows		move player in the respective direction
-B			displays all items in your backpack
-M			displays the map
-H			heal yourself using a potion
-S			displays player status and enemies left
-C			clears the screen
-Esc			end the game
+F1     displays basic game info and commands
+←↑↓→   move player in the respective direction
+B      displays all items in your backpack
+M      displays the map
+H      heal yourself using a potion
+S      displays player status and enemies left
+C      clears the screen
+Esc    end the game
 
 Map legend:
 P - the player;
