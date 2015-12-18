@@ -163,31 +163,6 @@
             }
         }
 
-        private void EnterBattle(ICharacter enemy)
-        {
-            while (true) //Fighting until one of them is dead. No one is running from combat.
-            {
-                this.player.Attack(enemy);
-
-                if (enemy.Health <= 0)
-                {
-                    ConsoleRenderer.WriteLine("Enemy killed!");
-                    this.characters.Remove(enemy as GameObject);
-                    return;
-                }
-
-                enemy.Attack(this.player);
-
-                if (this.player.Health <= 0)
-                {
-                    this.IsRunning = false;
-                    ConsoleRenderer.WriteLine("You died!");
-                    return;
-                }
-
-            }
-        }
-
         private void InitializeMap()
         {
             for (int i = 0; i < this.Map.Height; i++)
