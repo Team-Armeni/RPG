@@ -1,9 +1,10 @@
 ﻿namespace RPGArmeni.Engine.Commands
 {
     using RPGArmeni.Interfaces;
+    using UI;
     using System;
 
-	public class PrintMapCommand : GameCommand
+    public class PrintMapCommand : GameCommand
     {
         public PrintMapCommand(IGameEngine engine)
             : base(engine)
@@ -57,33 +58,38 @@
 
             //ConsoleRenderer.WriteLine(sb.ToString());
 
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.ForegroundColor = ConsoleColor.Red;
+            ConsoleRenderer.BackgroundColor(ConsoleColor.Green);
+            ConsoleRenderer.ForegroundColor(ConsoleColor.Red);
             for (int i = 0; i < this.Engine.Map.Height; i++)
             {
                 for (int j = 0; j < this.Engine.Map.Width; j++)
                 {
                     if (this.Engine.Map.Matrix[i, j] == 'H')
                     {
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write(this.Engine.Map.Matrix[i, j]);
+                        ConsoleRenderer.ForegroundColor(ConsoleColor.Blue);
+                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
                     }
                     else if (this.Engine.Map.Matrix[i, j] == 'P')
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.Write(this.Engine.Map.Matrix[i, j]);
+                        ConsoleRenderer.ForegroundColor(ConsoleColor.White);
+                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
+                    }
+                    else if((this.Engine.Map.Matrix[i, j] == 'A') || (this.Engine.Map.Matrix[i, j] == 'S'))
+                    {
+                        ConsoleRenderer.ForegroundColor(ConsoleColor.Green);
+                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(this.Engine.Map.Matrix[i, j]); 
+                        ConsoleRenderer.ForegroundColor(ConsoleColor.Red);
+                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString()); 
                     }
                 }
 
-                Console.WriteLine();
+                ConsoleRenderer.WriteLine(string.Empty);
             }
 
-            Console.ResetColor();
+            ConsoleRenderer.ResetColor();
         }
 
         public override void Execute()
