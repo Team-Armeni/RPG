@@ -30,6 +30,7 @@
             this.slotList.Add(this.MainHandSlot);
             this.weaponSlots = new Dictionary<int, ISlot>();
             this.armorSlots = new Dictionary<int, ISlot>();
+            this.BackPack = new BackPack();
 
             this.weaponSlots.Add(1, this.MainHandSlot);
             this.weaponSlots.Add(2, this.OffHandSlot);
@@ -117,8 +118,6 @@
         {
             get { return this.armorSlots; }
         }
-
-        public IRenderer ConsoleRenderer { get; set; }
 
         public void ClearInventory()
         {

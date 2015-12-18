@@ -7,6 +7,11 @@
         private IGameItem gameItem;
         private bool isEmpty;
 
+        public Slot()
+        {
+            this.IsEmpty = true;
+        }
+
         public IGameItem GameItem
         {
             get

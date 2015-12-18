@@ -24,8 +24,6 @@
 
         IDictionary<int, ISlot> ArmorSlots { get; }
 
-        IRenderer ConsoleRenderer { get; set; }
-
         void ClearInventory();
 
         void EquipItem(IGameItem itemToBeEquipped);
