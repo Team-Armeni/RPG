@@ -7,6 +7,7 @@ namespace RPGArmeni.Engine.Commands
 	using UI;
 	using System;
 	using System.Linq;
+    using Exceptions;
 
 	public class MovePlayerCommand : GameCommand
 	{
@@ -42,7 +43,7 @@ namespace RPGArmeni.Engine.Commands
 			{
 				currentItem.ItemState = ItemState.Collected;
 				this.Engine.Player.Inventory.BackPack.LootItem(currentItem);
-				ConsoleRenderer.WriteLine("Health potion collected!");
+				ConsoleRenderer.WriteLine("{0} collected!", currentItem.GetType().Name);
 			}
 		}
 
@@ -66,9 +67,17 @@ namespace RPGArmeni.Engine.Commands
 				ConsoleRenderer.WriteLine("The {0} hits you for {1} damage!",
 					currentEnemy.GetType().Name, currentEnemy.Damage);
 
-                if (this.Engine.Player.Health < 100)
+                if (this.Engine.Player.Health < 150 && this.Engine.Player.BackPack.SlotList.Any(x => x.GameItem is HealthPotion
+                    || x.GameItem is HealthBonusPotion))
                 {
-                    this.Engine.Player.SelfHeal();
+                    try
+                    {
+                        this.Engine.Player.SelfHeal();
+                    }
+                    catch (NoHealthPotionsException ex)
+                    {
+                        ConsoleRenderer.WriteLine(ex.Message);
+                    }
                 }
 
 				if (this.Engine.Player.Health <= 0)

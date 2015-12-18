@@ -5,8 +5,8 @@
     [Race]
     public class Orc : Race //A playable race character.
     {
-        private const int OrcBaseDamage = 30;
-        private const int OrcBaseHealth = 150;
+        private const int OrcBaseDamage = 20;
+        private const int OrcBaseHealth = 260;
 
         public Orc(int health, int damage)
             : base(OrcBaseHealth, OrcBaseDamage)

@@ -5,8 +5,8 @@
     [Race]
     public class Human : Race //A playable race character.
     {
-        private const int HumanBaseDamage = 15;
-        private const int HumanBaseHealth = 90;
+        private const int HumanBaseDamage = 35;
+        private const int HumanBaseHealth = 220;
 
         public Human(int health, int damage)
             : base(HumanBaseHealth, HumanBaseDamage)

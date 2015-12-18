@@ -5,7 +5,7 @@
     [Enemy]
     public class Troll : Character
     {
-        private const int TrollDamage = 75;
+        private const int TrollDamage = 45;
         private const int TrollHealth = 400;
         private const char TrollSymbol = 'T';
 

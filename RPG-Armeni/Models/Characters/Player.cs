@@ -7,6 +7,7 @@
     using Items;
     using RPGArmeni.Models.Containers;
     using System.Text;
+    using RPGArmeni.UI;
 
     public class Player : Character, IPlayer
     {
@@ -157,6 +158,8 @@
 
             int maximumHealthRestore = this.Health;
             this.Health += (healthPotionSlot.GameItem as HealthPotion).HealthRestore;
+            ConsoleRenderer.WriteLine("You restored {0} health points using Health Potion!", 
+                (healthPotionSlot.GameItem as HealthPotion).HealthRestore);
             if (this.Health > maximumHealthRestore) //Healing potions only restore health to the player's current Health value.
             {
                 this.Health = maximumHealthRestore;
