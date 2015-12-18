@@ -151,7 +151,8 @@
                         commandKey.
                         Key.ToString().ToLower().
                         Substring(0, commandKey.Key.ToString().Length - 5));
-                    
+                    currentCommand = new PrintMapCommand(this);
+                    currentCommand.Execute();
                     break;
                 case ConsoleKey.S://"status":
                     currentCommand = new PlayerStatusCommand(this);
