@@ -15,6 +15,7 @@ Commands:
 Press "F1" - displays basic game info and commands;
 Press "B" - displays all items in your backpack;
 Press "M" - displays the map;
+Press "H" - heal yourself using a potion;
 Press "LeftArrow", "RightArrow", "UpArrow", "DownArrow" to move the player in the respective direction;
 Press "S" - displays player status and enemies left;
 Press "C" - clears the screen;

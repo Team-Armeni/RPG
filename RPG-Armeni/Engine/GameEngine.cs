@@ -161,6 +161,10 @@
                 case ConsoleKey.C://"clear":
                     ConsoleRenderer.Clear();
                     break;
+                case ConsoleKey.H: //"heal"
+                    currentCommand = new HealCommand(this);
+                    currentCommand.Execute();
+                    break;
                 case ConsoleKey.B: //"backpack":
                     currentCommand = new BackPackCommand(this);
                     currentCommand.Execute();

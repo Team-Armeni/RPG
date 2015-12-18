@@ -153,13 +153,13 @@
         {
             ISlot healthPotionSlot = this.BackPack
                 .SlotList
-                .FirstOrDefault(x => x is HealthPotion);
+                .FirstOrDefault(x => x.GameItem is HealthPotion || x.GameItem is HealthBonusPotion);
 
             if (healthPotionSlot == null)
             {
                 throw new NoHealthPotionsException("There are no health potions left in the backpack.");
             }
-
+            
             int maximumHealthRestore = this.Health;
             this.Health += (healthPotionSlot.GameItem as HealthPotion).HealthRestore;
             ConsoleRenderer.WriteLine("You restored {0} health points using Health Potion!", 
