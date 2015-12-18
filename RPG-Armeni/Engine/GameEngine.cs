@@ -182,7 +182,14 @@
             {
                 for (int j = 0; j < this.Map.Width; j++)
                 {
-                    this.Map.Matrix[i, j] = '.';
+                    if (i > this.Map.Height - 5)
+                    {
+                        this.Map.Matrix[i, j] = '~'; 
+                    }
+                    else
+                    {
+                        this.Map.Matrix[i, j] = '.'; 
+                    }
                 }
             }
         }
