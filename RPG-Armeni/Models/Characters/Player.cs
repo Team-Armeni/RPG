@@ -16,7 +16,6 @@
         private string name;
         private int defensiveBonus;
         private IInventory inventory;
-        private IContainer backPack;
         private IRace race;
  
         public Player(IPosition position, char objectSymbol, string name, IRace race)
@@ -25,7 +24,6 @@
             this.Name = name;
             this.Race = race;
             this.inventory = new Inventory();
-            this.BackPack = new BackPack();
         }
 
         public string Name
@@ -77,18 +75,6 @@
             private set
             {
                 this.inventory = value;
-            }
-        }
-
-        public IContainer BackPack
-        {
-            get
-            {
-                return this.backPack;
-            }
-            private set
-            {
-                this.backPack = value;
             }
         }
 
@@ -151,7 +137,8 @@
 
         public void SelfHeal()
         {
-            ISlot healthPotionSlot = this.BackPack
+            ISlot healthPotionSlot = this.Inventory
+                .BackPack
                 .SlotList
                 .FirstOrDefault(x => x.GameItem is HealthPotion || x.GameItem is HealthBonusPotion);
 
@@ -168,12 +155,12 @@
             {
                 this.Health = maximumHealthRestore;
             }
-            this.BackPack.RemoveItem(healthPotionSlot);
+            this.Inventory.BackPack.RemoveItem(healthPotionSlot);
         }
 
         public void DrinkHealthBonusPotion()
         {
-            ISlot healthPotionSlot = this.BackPack
+            ISlot healthPotionSlot = this.Inventory.BackPack
                 .SlotList
                 .FirstOrDefault(x => x is HealthBonusPotion);
 
@@ -182,7 +169,7 @@
                 throw new NoHealthPotionsException("There are no health potions left in the backpack.");
             }
             this.Health += (healthPotionSlot.GameItem as HealthBonusPotion).HealthBonus;
-            this.BackPack.RemoveItem(healthPotionSlot);
+            this.Inventory.BackPack.RemoveItem(healthPotionSlot);
         }
 
         public override string ToString()

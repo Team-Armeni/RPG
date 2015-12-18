@@ -72,7 +72,7 @@ namespace RPGArmeni.Engine.Commands
 				ConsoleRenderer.WriteLine("The {0} hits you for {1} damage!",
 					currentEnemy.GetType().Name, currentEnemy.Damage);
 
-                if (this.Engine.Player.Health < 150 && this.Engine.Player.BackPack.SlotList.Any(x => x.GameItem is HealthPotion
+                if (this.Engine.Player.Health < 150 && this.Engine.Player.Inventory.BackPack.SlotList.Any(x => x.GameItem is HealthPotion
                     || x.GameItem is HealthBonusPotion))
                 {
                     try
