@@ -76,7 +76,7 @@
                     }
                     else if((this.Engine.Map.Matrix[i, j] == 'A') || (this.Engine.Map.Matrix[i, j] == 'S'))
                     {
-                        ConsoleRenderer.ForegroundColor(ConsoleColor.Green);
+                        ConsoleRenderer.ForegroundColor(ConsoleColor.DarkCyan);
                         ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
                     }
                     else

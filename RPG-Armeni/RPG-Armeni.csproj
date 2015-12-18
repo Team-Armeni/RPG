@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\EnemyAttribute.cs" />
+    <Compile Include="Attributes\ItemAttribute.cs" />
     <Compile Include="Attributes\RaceAttribute.cs" />
     <Compile Include="Attributes\WeaponAttribute.cs" />
     <Compile Include="Engine\Commands\BackPackCommand.cs" />

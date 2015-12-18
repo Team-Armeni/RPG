@@ -4,6 +4,7 @@ using System;
 namespace RPGArmeni.Models.Items.WeaponItems
 {
     [Weapon]
+    [ItemAttribute]
     public class Sword : WeaponItem
     {
         private const char SwardSymbol = 'S';

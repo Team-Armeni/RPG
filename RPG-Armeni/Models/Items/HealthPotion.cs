@@ -1,5 +1,8 @@
-﻿namespace RPGArmeni.Models.Items
+﻿using RPGArmeni.Attributes;
+
+namespace RPGArmeni.Models.Items
 {
+    [ItemAttribute]
     public class HealthPotion : Item
     {
         private const char HealthPotionSymbol = 'H';
