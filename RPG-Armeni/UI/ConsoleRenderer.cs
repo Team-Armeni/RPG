@@ -18,5 +18,17 @@
         {
             Console.Clear();
         }
+        public static void ForegroundColor(ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+        }
+        public static void BackgroundColor(ConsoleColor color)
+        {
+            Console.BackgroundColor = color;
+        }
+        public static void ResetColor()
+        {
+            Console.ResetColor();
+        }
     }
 }
