@@ -109,7 +109,6 @@
     <Compile Include="Models\Items\Item.cs" />
     <Compile Include="Models\Items\ItemState.cs" />
     <Compile Include="Models\Items\WeaponItems\Axe.cs" />
-    <Compile Include="Models\Items\WeaponItems\ItemAttribute.cs" />
     <Compile Include="Models\Items\WeaponItems\Sword.cs" />
     <Compile Include="Models\Items\WeaponItems\WeaponItem.cs" />
     <Compile Include="Models\Map.cs" />
