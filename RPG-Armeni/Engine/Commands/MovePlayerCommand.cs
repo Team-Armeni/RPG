@@ -66,6 +66,11 @@ namespace RPGArmeni.Engine.Commands
 				ConsoleRenderer.WriteLine("The {0} hits you for {1} damage!",
 					currentEnemy.GetType().Name, currentEnemy.Damage);
 
+                if (this.Engine.Player.Health < 100)
+                {
+                    this.Engine.Player.SelfHeal();
+                }
+
 				if (this.Engine.Player.Health <= 0)
 				{
 					this.Engine.IsRunning = false;

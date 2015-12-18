@@ -154,6 +154,7 @@
             {
                 throw new NoHealthPotionsException("There are no health potions left in the backpack.");
             }
+
             int maximumHealthRestore = this.Health;
             this.Health += (healthPotionSlot.GameItem as HealthPotion).HealthRestore;
             if (this.Health > maximumHealthRestore) //Healing potions only restore health to the player's current Health value.

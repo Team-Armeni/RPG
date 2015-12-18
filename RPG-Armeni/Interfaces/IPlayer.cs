@@ -9,5 +9,7 @@
         int DefensiveBonus { get; }
 
         IGameEngine Engine { get; set; }
+
+        void SelfHeal();
     }
 }
