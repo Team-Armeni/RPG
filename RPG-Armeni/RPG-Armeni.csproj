@@ -47,6 +47,7 @@
     <Compile Include="Attributes\WeaponAttribute.cs" />
     <Compile Include="Engine\Commands\BackPackCommand.cs" />
     <Compile Include="Engine\Commands\GameCommand.cs" />
+    <Compile Include="Engine\Commands\GameStateScreens.cs" />
     <Compile Include="Engine\Commands\HealCommand.cs" />
     <Compile Include="Engine\Commands\HelpCommand.cs" />
     <Compile Include="Engine\Commands\MovePlayerCommand.cs" />
