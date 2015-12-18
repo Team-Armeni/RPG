@@ -10,6 +10,7 @@
         public Slot()
         {
             this.IsEmpty = true;
+            this.GameItem = null;
         }
 
         public IGameItem GameItem

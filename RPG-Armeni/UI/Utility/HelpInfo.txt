@@ -13,10 +13,11 @@ Combat is automatic - when you reach an enemy, you fight until one of you is dea
 
 Commands:
 type "help" - displays basic game info and commands;
+type backpack - displays all items in your backpack;
 type "map" - displays the map;
 type "left", "right", "up", "down" to move the player in the respective direction;
 type "status" - displays player status and enemies left;
-tye "clear" - clears the screen;
+type "clear" - clears the screen;
 type "exit" - end the game;
 
 Map legend:

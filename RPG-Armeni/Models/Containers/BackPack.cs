@@ -5,6 +5,7 @@
     using System.Linq;
     using Exceptions;
     using RPGArmeni.UI;
+    using System;
 
     public class BackPack : IContainer
     {
@@ -23,10 +24,6 @@
         public IEnumerable<ISlot> SlotList
         {
             get { return this.slotList; }
-            private set
-            {
-                this.slotList = new List<ISlot>();
-            }
         }
 
         public void LootItem(IGameItem itemToBeLooted)
@@ -37,6 +34,9 @@
             {
                 throw new BackPackFullException("Your backpack is full.");
             }
+
+            emptySlot.GameItem = itemToBeLooted;
+            emptySlot.IsEmpty = false;
         }
 
         public void RemoveItem(ISlot slot)
@@ -47,10 +47,16 @@
 
         public void ListItems()
         {
-            foreach (IGameItem currentItem in this.SlotList)
+            var fullSlots = this.SlotList.Where(x => !x.IsEmpty);
+            foreach (ISlot currentSlot in fullSlots)
             {
-                ConsoleRenderer.WriteLine(currentItem.ToString());
+                ConsoleRenderer.WriteLine(currentSlot.GameItem.ToString());
             }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            ConsoleRenderer.WriteLine("Empty slots: {0}",
+                this.SlotList.Count() - fullSlots.Count());
+            Console.ResetColor();
         }
     }
 }

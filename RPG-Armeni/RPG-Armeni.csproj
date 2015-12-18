@@ -44,6 +44,7 @@
     <Compile Include="Attributes\EnemyAttribute.cs" />
     <Compile Include="Attributes\RaceAttribute.cs" />
     <Compile Include="Attributes\WeaponAttribute.cs" />
+    <Compile Include="Engine\Commands\BackPackCommand.cs" />
     <Compile Include="Engine\Commands\GameCommand.cs" />
     <Compile Include="Engine\Commands\HelpCommand.cs" />
     <Compile Include="Engine\Commands\MovePlayerCommand.cs" />

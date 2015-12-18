@@ -152,6 +152,10 @@
                 case "clear":
                     ConsoleRenderer.Clear();
                     break;
+                case "backpack":
+                    currentCommand = new BackPackCommand(this);
+                    currentCommand.Execute();
+                    break;
                 case "exit":
                     this.IsRunning = false;
                     ConsoleRenderer.WriteLine("Good Bye! Do come again to play this great game!");

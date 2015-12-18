@@ -33,5 +33,10 @@ namespace RPGArmeni.Models.Items.ArmorItems
                 this.armorType = value;
             }
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0} defence bonus: {1}", this.GetType().Name, this.DefenceBonus);
+        }
     }
 }
