@@ -53,10 +53,10 @@
                 ConsoleRenderer.WriteLine(currentSlot.GameItem.ToString());
             }
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            ConsoleRenderer.ForegroundColor(ConsoleColor.Green);
             ConsoleRenderer.WriteLine("Empty slots: {0}",
                 this.SlotList.Count() - fullSlots.Count());
-            Console.ResetColor();
+            ConsoleRenderer.ResetColor();
         }
     }
 }

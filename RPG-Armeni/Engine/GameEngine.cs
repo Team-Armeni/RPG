@@ -97,7 +97,7 @@
 
             IGameCommand spawnItems = new SpawnItemsCommand(this);
             spawnItems.Execute();
-            Console.WriteLine("Press F1 to get playing instructions.");
+            ConsoleRenderer.WriteLine("Press F1 to get playing instructions.");
 
             while (this.IsRunning)
             {

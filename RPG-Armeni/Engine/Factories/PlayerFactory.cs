@@ -54,9 +54,9 @@
         private string GetPlayerName()
         {
             string name;
-            Console.ForegroundColor = ConsoleColor.Green;
+            ConsoleRenderer.ForegroundColor(ConsoleColor.Green);
             ConsoleRenderer.Write("Type player's name : ");
-            Console.ResetColor();
+            ConsoleRenderer.ResetColor();
             ConsoleRenderer.WriteLine("(including only small and capital letters and between 2 and 10 characters)");
             while (true)
             {
@@ -77,23 +77,23 @@
                 }
             }
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            ConsoleRenderer.ForegroundColor(ConsoleColor.Green);
             ConsoleRenderer.WriteLine("Player name set to: {0}", name);
-            Console.ResetColor();
+            ConsoleRenderer.ResetColor();
 
             return name;
         }
 
         private IRace GetPlayerRace()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            ConsoleRenderer.ForegroundColor(ConsoleColor.Green);
             ConsoleRenderer.WriteLine("Choose a race : ");
-            Console.ResetColor();
+            ConsoleRenderer.ResetColor();
 
             for (int i = 0; i < this.availableRaces.Count; i++)
             {
                 IRace currentRace = Activator.CreateInstance(this.availableRaces[i]) as IRace;
-                Console.WriteLine("{0}: {1} - (Health: {2}, Damage: {3})",
+                ConsoleRenderer.WriteLine("{0}: {1} - (Health: {2}, Damage: {3})",
                         i + 1, this.availableRaces[i].Name, currentRace.Health, currentRace.Damage);
             }
 
@@ -129,9 +129,9 @@
                 }
             }
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            ConsoleRenderer.ForegroundColor(ConsoleColor.Green);
             ConsoleRenderer.WriteLine("Race chosen: {0}", this.availableRaces[index - 1].Name);
-            Console.ResetColor();
+            ConsoleRenderer.ResetColor();
 
             return Activator.CreateInstance(this.availableRaces[index - 1]) as IRace;
         }
