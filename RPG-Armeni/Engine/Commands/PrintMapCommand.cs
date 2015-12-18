@@ -23,34 +23,28 @@
             {
                 for (int j = 0; j < this.Engine.Map.Width; j++)
                 {
-                    if (this.Engine.Map.Matrix[i, j] == 'H')
+                    switch (this.Engine.Map.Matrix[i, j])
                     {
-                        ConsoleRenderer.ForegroundColor(ConsoleColor.Blue);
-                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
-                    }
-                    else if (this.Engine.Map.Matrix[i, j] == 'P')
-                    {
-                        ConsoleRenderer.ForegroundColor(ConsoleColor.White);
-                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
-                    }
-                    else if ((this.Engine.Map.Matrix[i, j] == 'A') || (this.Engine.Map.Matrix[i, j] == 'S'))
-                    {
-                        ConsoleRenderer.ForegroundColor(ConsoleColor.DarkCyan);
-                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
-                    }
-                    else if (this.Engine.Map.Matrix[i, j] == '~')
-                    {
-                        ConsoleRenderer.BackgroundColor(ConsoleColor.DarkBlue);
-                        ConsoleRenderer.ForegroundColor(ConsoleColor.Cyan);
-                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
-                        ConsoleRenderer.BackgroundColor(ConsoleColor.Green);
-                    }
-                    else
-                    {
-                        ConsoleRenderer.ForegroundColor(ConsoleColor.Red);
-                        ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
-                    }
-                }
+	                    case 'H':
+		                    ConsoleRenderer.ForegroundColor(ConsoleColor.Blue);
+		                    break;
+	                    case 'P':
+		                    ConsoleRenderer.ForegroundColor(ConsoleColor.White);
+		                    break;
+	                    case 'A':
+	                    case 'S':
+		                    ConsoleRenderer.ForegroundColor(ConsoleColor.DarkCyan);
+		                    break;
+	                    case '~':
+		                    ConsoleRenderer.BackgroundColor(ConsoleColor.DarkBlue);
+		                    ConsoleRenderer.ForegroundColor(ConsoleColor.Cyan);
+		                    break;
+	                    default:
+		                    ConsoleRenderer.ForegroundColor(ConsoleColor.Red);
+		                    break;
+					}
+					ConsoleRenderer.Write(this.Engine.Map.Matrix[i, j].ToString());
+				}
 
                 ConsoleRenderer.WriteLine(string.Empty);
             }
