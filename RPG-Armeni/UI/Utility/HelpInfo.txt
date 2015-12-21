@@ -15,6 +15,7 @@ Controls:
 F1     displays basic game info and commands
 ←↑↓→   move player in the respective direction
 B      displays all items in your backpack
+R      Removes your last collected element from your backpack			
 M      displays the map
 H      heal yourself using a potion
 I      consume a health bonus potion to increase your health permanently, has a healing effect as well

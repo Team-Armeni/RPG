@@ -170,7 +170,7 @@
                     currentCommand = new BoostHealthCommand(this);
                     currentCommand.Execute();
                     break;
-                case ConsoleKey.E:
+                case ConsoleKey.R:
                     this.Player.Inventory.BackPack.RemoveLastItem();
                     break;
                 case ConsoleKey.B: 
