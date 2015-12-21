@@ -3,7 +3,7 @@
     using System;
     using Engine;
     using Exceptions;
-    using RPGArmeni.Interfaces;
+    using Interfaces;
 
     public abstract class GameObject : IGameObject
     {

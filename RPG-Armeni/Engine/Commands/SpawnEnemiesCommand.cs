@@ -11,11 +11,6 @@
         {
         }
 
-        public override void Execute(string[] args)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Execute()
         {
             for (int i = 0; i < this.Engine.NumberOfEnemies; i++)

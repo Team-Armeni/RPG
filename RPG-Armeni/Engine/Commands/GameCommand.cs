@@ -22,9 +22,7 @@
                 this.engine = value;
             }
         }
-
-        public abstract void Execute(string[] args);
-
+        
 	    public virtual void Execute(IKeyInfo directionKey)
 	    {
 	        

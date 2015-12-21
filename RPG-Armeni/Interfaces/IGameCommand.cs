@@ -6,8 +6,6 @@ namespace RPGArmeni.Interfaces
     {
         IGameEngine Engine { get; set; }
 
-        void Execute(string[] args);
-
         void Execute(IKeyInfo directionKey);
 
         void Execute();

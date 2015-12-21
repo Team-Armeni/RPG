@@ -1,6 +1,6 @@
 ﻿namespace RPGArmeni.Models.Containers
 {
-    using RPGArmeni.Interfaces;
+    using Interfaces;
 
 	public class Slot : ISlot
     {

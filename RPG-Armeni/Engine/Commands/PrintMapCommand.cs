@@ -11,10 +11,6 @@
         {
         }
 
-        public override void Execute(string[] args)
-        {
-        }
-
         public override void Execute()
         {
             ConsoleRenderer.BackgroundColor(ConsoleColor.Green);

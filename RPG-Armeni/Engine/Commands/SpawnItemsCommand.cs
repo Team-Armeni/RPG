@@ -9,11 +9,7 @@
             : base(engine)
         {
         }
-
-        public override void Execute(string[] args)
-        {
-        }
-
+        
         public override void Execute()
         {
             for (int i = 0; i < this.Engine.NumberOfItems; i++)

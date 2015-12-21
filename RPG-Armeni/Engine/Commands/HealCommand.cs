@@ -10,11 +10,6 @@
         {
         }
 
-        public override void Execute(string[] args)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Execute()
         {
             this.Engine.Player.SelfHeal();

@@ -1,14 +1,10 @@
-﻿using System.IO;
-
-namespace RPGArmeni.Engine.Commands
+﻿namespace RPGArmeni.Engine.Commands
 {
 	using Interfaces;
 	using Models.Items;
 	using UI;
-	using System;
 	using System.Linq;
     using Exceptions;
-	using Commands;
 
 	public class MovePlayerCommand : GameCommand
 	{
@@ -17,45 +13,43 @@ namespace RPGArmeni.Engine.Commands
 		{
 		}
 
-	    public override void Execute(string[] args)
-	    {
-	        
-	    }
-
         public override void Execute(IKeyInfo directionKey)
+        {
+            this.Engine.Player.Move(directionKey);
+
+            ICharacter currentEnemy = this.FindEnemy();
+
+            if (currentEnemy != null)
+            {
+                this.EnterBattle(currentEnemy);
+                return;
+            }
+
+            IGameItem currentItem = this.FindItem();
+
+            if (currentItem != null)
+            {
+                this.CollectItem(currentItem);
+            }
+        }
+
+        public override void Execute()
+        {
+        }
+
+        private void CollectItem(IGameItem currentItem)
+        {
+            currentItem.ItemState = ItemState.Collected;
+            this.Engine.Player.Inventory.BackPack.LootItem(currentItem);
+            ConsoleRenderer.WriteLine("{0} collected!", currentItem.GetType().Name);
+        }
+
+
+        private void EnterBattle(ICharacter currentEnemy)
 		{
-			//string direction = args[0];
-
-			this.Engine.Player.Move(directionKey);
-
-			ICharacter currentEnemy = this.Engine
-				.Characters
-				.FirstOrDefault(x => x.Position.X == this.Engine.Player.Position.X
-				                     && x.Position.Y == this.Engine.Player.Position.Y) as ICharacter;
-
-			if (currentEnemy != null)
-			{
-				this.EnterBattle(currentEnemy);
-				return;
-			}
-
-			IGameItem currentItem = this.Engine
-				.Items
-				.FirstOrDefault(e => e.Position.X == this.Engine.Player.Position.X
-				                     && e.Position.Y == this.Engine.Player.Position.Y
-				                     && e.ItemState == ItemState.Available);
-
-			if (currentItem != null)
-			{
-				currentItem.ItemState = ItemState.Collected;
-				this.Engine.Player.Inventory.BackPack.LootItem(currentItem);
-				ConsoleRenderer.WriteLine("{0} collected!", currentItem.GetType().Name);
-			}
-		}
-
-		private void EnterBattle(ICharacter currentEnemy)
-		{
-			ConsoleRenderer.WriteLine("An enemy {0} is approaching. Prepare for battle!", currentEnemy.GetType().Name);
+			ConsoleRenderer.WriteLine(
+                "An enemy {0} is approaching. Prepare for battle!", 
+                currentEnemy.GetType().Name);
 			while (true)
 			{
 				this.Engine.Player.Attack(currentEnemy);
@@ -96,8 +90,21 @@ namespace RPGArmeni.Engine.Commands
 			}
 		}
 
-		public override void Execute()
-		{
-		}
-	}
+        private IGameItem FindItem()
+        {
+            return this.Engine
+                            .Items
+                            .FirstOrDefault(e => e.Position.X == this.Engine.Player.Position.X
+                                                 && e.Position.Y == this.Engine.Player.Position.Y
+                                                 && e.ItemState == ItemState.Available);
+        }
+
+        private ICharacter FindEnemy()
+        {
+            return this.Engine
+                            .Characters
+                            .FirstOrDefault(x => x.Position.X == this.Engine.Player.Position.X
+                                                 && x.Position.Y == this.Engine.Player.Position.Y) as ICharacter;
+        }
+    }
 }

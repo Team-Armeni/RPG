@@ -12,11 +12,6 @@
         {
         }
 
-        public override void Execute(string[] args)
-        {
-           throw new NotImplementedException();
-        }
-
         public override void Execute()
         {
             ConsoleRenderer.WriteLine(this.Engine.Player.ToString());

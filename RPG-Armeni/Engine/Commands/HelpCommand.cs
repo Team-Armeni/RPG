@@ -11,11 +11,6 @@
         {
         }
 
-        public override void Execute(string[] args)
-        {
-            
-        }
-
         public override void Execute()
         {
             string helpInfo = File.ReadAllText("../../UI/Utility/HelpInfo.txt");

@@ -88,7 +88,7 @@
 
         public bool IsRunning { get; set; }
 
-        public void Run()
+        public virtual void Run()
         {
             this.IsRunning = true;
             this.player = PlayerFactory.Instance.CreatePlayer();
@@ -145,13 +145,9 @@
                 case ConsoleKey.UpArrow:
                 case ConsoleKey.DownArrow:
                     ConsoleRenderer.Clear();
+                    RenderSuccessMoveMessage(commandKey);
                     currentCommand = new MovePlayerCommand(this);
                     currentCommand.Execute(commandKey);
-                    ConsoleRenderer.WriteLine(
-                        "Moved " + 
-                        commandKey.
-                        Key.ToString().ToLower().
-                        Substring(0, commandKey.Key.ToString().Length - 5));
                     currentCommand = new PrintMapCommand(this);
                     currentCommand.Execute();
                     break;
@@ -178,14 +174,28 @@
                     currentCommand.Execute();
                     break;
                 case ConsoleKey.Escape:
-                    this.IsRunning = false;
-                    ConsoleRenderer.WriteLine("Good Bye! Do come again to play this great game!");
+                    this.ExitApplication();
                     break;
                 default:
                     {
                         throw new ArgumentException("Unknown command");
                     }
             }
+        }
+
+        private void ExitApplication()
+        {
+            this.IsRunning = false;
+            ConsoleRenderer.WriteLine("Good Bye! Do come again to play this great game!");
+        }
+
+        private static void RenderSuccessMoveMessage(IKeyInfo commandKey)
+        {
+            ConsoleRenderer.WriteLine(
+                                    "Moved " +
+                                    commandKey.
+                                    Key.ToString().ToLower().
+                                    Substring(0, commandKey.Key.ToString().Length - 5));
         }
 
         private void InitializeMap()

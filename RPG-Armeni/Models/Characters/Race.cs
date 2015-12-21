@@ -7,13 +7,13 @@
         private int health;
         private int damage;
 
-        public Race(int health, int damage)
+        protected Race(int health, int damage)
         {
             this.Health = health;
             this.Damage = damage;
         }
 
-        public Race()
+        protected Race()
         {
 
         }

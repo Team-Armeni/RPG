@@ -8,6 +8,8 @@
 	{
 		public static void ShowGameOverScreen()
 		{
+            ConsoleRenderer.Clear();
+
 			const int skullHeight = 19;
 			string centerPadding = new string(' ', Console.BufferWidth / 4);
 
@@ -28,6 +30,8 @@
 			}
 
 			Console.ForegroundColor = ConsoleColor.White;
+
+            Environment.Exit(0);
 		}
 	}
 }
