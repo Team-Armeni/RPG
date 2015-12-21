@@ -1,7 +1,7 @@
-﻿using RPGArmeni.Interfaces;
-
-namespace RPGArmeni.Models.Items.ArmorItems
+﻿namespace RPGArmeni.Models.Items.ArmorItems
 {
+    using Interfaces;
+
     public abstract class ArmorItem : Item, IArmor
     {
         private int defenceBonus;

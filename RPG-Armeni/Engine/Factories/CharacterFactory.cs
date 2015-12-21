@@ -1,7 +1,7 @@
 ﻿namespace RPGArmeni.Engine.Factories
 {
-    using RPGArmeni.Attributes;
-    using RPGArmeni.Interfaces;
+    using Attributes;
+    using Interfaces;
     using System;
     using System.Linq;
     using System.Reflection;

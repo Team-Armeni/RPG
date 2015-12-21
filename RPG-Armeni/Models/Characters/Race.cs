@@ -1,7 +1,7 @@
-﻿using RPGArmeni.Interfaces;
-
-namespace RPGArmeni.Models.Characters
+﻿namespace RPGArmeni.Models.Characters
 {
+    using Interfaces;
+
     public abstract class Race : IRace //A base abstract class for playable races. The player picks one.
     {
         private int health;

@@ -1,14 +1,14 @@
 ﻿namespace RPGArmeni.Engine.Factories
 {
-    using RPGArmeni.Interfaces;
+    using Interfaces;
     using System;
-    using RPGArmeni.UI;
+    using UI;
     using System.Text.RegularExpressions;
-    using RPGArmeni.Models.Characters;
+    using Models.Characters;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using RPGArmeni.Attributes;
+    using Attributes;
 
     public class PlayerFactory
     {

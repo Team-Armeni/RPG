@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace RPGArmeni.Engine.Factories
+﻿namespace RPGArmeni.Engine.Factories
 {
+    using System;
+
     public static class RandomGenerator
     {
         private static Random randomGenerator = new Random();

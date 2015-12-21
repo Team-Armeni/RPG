@@ -5,9 +5,9 @@
     using Exceptions;
     using Interfaces;
     using Items;
-    using RPGArmeni.Models.Containers;
+    using Containers;
     using System.Text;
-    using RPGArmeni.UI;
+    using UI;
 
     public class Player : Character, IPlayer
     {

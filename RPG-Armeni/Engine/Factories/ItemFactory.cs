@@ -1,8 +1,8 @@
 ﻿namespace RPGArmeni.Engine.Factories
 {
     using Attributes;
-    using RPGArmeni.Interfaces;
-    using RPGArmeni.Models.Items;
+    using Interfaces;
+    using Models.Items;
     using System;
     using System.Linq;
     using System.Reflection;
