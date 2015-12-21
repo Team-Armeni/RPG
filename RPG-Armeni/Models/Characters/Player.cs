@@ -13,6 +13,9 @@
     {
         private const int PlayerStartingX = 0;
         private const int PlayerStartingY = 0;
+        private const char DefaultPlayerSymbol = 'P';
+        private const char DefaultEmptyMapSybmol = '.';
+            
         private int startHealth;
         private string name;
         private int defensiveBonus;
@@ -81,54 +84,22 @@
         }
 
         public IGameEngine Engine { get; set; }
-
-        public void Move(string direction)
-        {
-        }
-
+        
         public void Move(IKeyInfo directionKey)
         {
             switch (directionKey.Key)
             {
-                case ConsoleKey.UpArrow: //"up":
-                    if (this.Position.X - 1 < 0)
-                    {
-                        throw new ObjectOutOfBoundsException("You have reached the border of the map.");
-                    }
-
-                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = '.';
-                    this.Position = new Position(this.Position.X - 1, this.Position.Y);
-                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
+                case ConsoleKey.UpArrow:
+                    this.MoveUp();
                     break;
-                case ConsoleKey.DownArrow: //"down":
-                    if (this.Position.X + 1 >= this.Engine.Map.Height)
-                    {
-                        throw new ObjectOutOfBoundsException("You have reached the border of the map.");
-                    }
-
-                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = '.';
-                    this.Position = new Position(this.Position.X + 1, this.Position.Y);
-                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
+                case ConsoleKey.DownArrow:
+                    this.MoveDown();
                     break;
-                case ConsoleKey.RightArrow: //"right":
-                    if (this.Position.Y + 1 >= this.Engine.Map.Width)
-                    {
-                        throw new ObjectOutOfBoundsException("You have reached the border of the map.");
-                    }
-
-                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = '.';
-                    this.Position = new Position(this.Position.X, this.Position.Y + 1);
-                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
+                case ConsoleKey.RightArrow:
+                    this.MoveRight();
                     break;
-                case ConsoleKey.LeftArrow: //"left":
-                    if (this.Position.Y - 1 < 0)
-                    {
-                        throw new ObjectOutOfBoundsException("You have reached the border of the map.");
-                    }
-
-                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = '.';
-                    this.Position = new Position(this.Position.X, this.Position.Y - 1);
-                    this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = 'P';
+                case ConsoleKey.LeftArrow:
+                    this.MoveLeft();
                     break;
                 default:
                 {
@@ -136,7 +107,7 @@
                 }
             }
         }
-
+        
         public void SelfHeal()
         {
             ISlot healthPotionSlot = this.Inventory
@@ -184,6 +155,55 @@
             output.AppendLine("Player stats:");
             output.AppendFormat("Health: {0}, Damage: {1}, Defensive Bonus: {2}", this.Health, this.Damage, this.DefensiveBonus);
             return output.ToString();
+        }
+
+        private void MoveLeft()
+        {
+            if (this.Position.Y - 1 < 0)
+            {
+                throw new ObjectOutOfBoundsException("You have reached the border of the map.");
+            }
+
+            this.ChangePlayerCoordinates(0, -1);
+
+            
+        }
+
+        private void MoveRight()
+        {
+            if (this.Position.Y + 1 >= this.Engine.Map.Width)
+            {
+                throw new ObjectOutOfBoundsException("You have reached the border of the map.");
+            }
+
+            this.ChangePlayerCoordinates(0, 1);
+        }
+
+        private void MoveDown()
+        {
+            if (this.Position.X + 1 >= this.Engine.Map.Height)
+            {
+                throw new ObjectOutOfBoundsException("You have reached the border of the map.");
+            }
+
+            this.ChangePlayerCoordinates(1, 0);
+        }
+
+        private void MoveUp()
+        {
+            if (this.Position.X - 1 < 0)
+            {
+                throw new ObjectOutOfBoundsException("You have reached the border of the map.");
+            }
+
+            this.ChangePlayerCoordinates(-1, 0);
+        }
+
+        private void ChangePlayerCoordinates(int x, int y)
+        {
+            this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = DefaultEmptyMapSybmol;
+            this.Position = new Position(this.Position.X + x, this.Position.Y + y);
+            this.Engine.Map.Matrix[this.Position.X, this.Position.Y] = DefaultPlayerSymbol;
         }
     }
 }

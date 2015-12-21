@@ -129,22 +129,21 @@
         protected virtual void ExecuteCommand(IKeyInfo commandKey)
         {
             IGameCommand currentCommand;
-            //string[] commandArgs = command.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             switch (commandKey.Key)
             {
-                case ConsoleKey.F1://"help":
+                case ConsoleKey.F1:
                     currentCommand = new HelpCommand(this);
                     currentCommand.Execute();
                     break;
-                case ConsoleKey.M://"map":
+                case ConsoleKey.M:
                     ConsoleRenderer.Clear();
                     currentCommand = new PrintMapCommand(this);
                     currentCommand.Execute();
                     break;
-                case ConsoleKey.LeftArrow://"left":
-                case ConsoleKey.RightArrow://"right":
-                case ConsoleKey.UpArrow://"up":
-                case ConsoleKey.DownArrow://"down":
+                case ConsoleKey.LeftArrow:
+                case ConsoleKey.RightArrow:
+                case ConsoleKey.UpArrow:
+                case ConsoleKey.DownArrow:
                     ConsoleRenderer.Clear();
                     currentCommand = new MovePlayerCommand(this);
                     currentCommand.Execute(commandKey);
@@ -156,26 +155,26 @@
                     currentCommand = new PrintMapCommand(this);
                     currentCommand.Execute();
                     break;
-                case ConsoleKey.S://"status":
+                case ConsoleKey.S:
                     currentCommand = new PlayerStatusCommand(this);
                     currentCommand.Execute();
                     break;
-                case ConsoleKey.C://"clear":
+                case ConsoleKey.C:
                     ConsoleRenderer.Clear();
                     break;
-                case ConsoleKey.H: //"heal"
+                case ConsoleKey.H: 
                     currentCommand = new HealCommand(this);
                     currentCommand.Execute();
                     break;
-                case ConsoleKey.I: //"get health bonus"
+                case ConsoleKey.I:
                     currentCommand = new BoostHealthCommand(this);
                     currentCommand.Execute();
                     break;
-                case ConsoleKey.B: //"backpack":
+                case ConsoleKey.B: 
                     currentCommand = new BackPackCommand(this);
                     currentCommand.Execute();
                     break;
-                case ConsoleKey.Escape: //"exit":
+                case ConsoleKey.Escape:
                     this.IsRunning = false;
                     ConsoleRenderer.WriteLine("Good Bye! Do come again to play this great game!");
                     break;
