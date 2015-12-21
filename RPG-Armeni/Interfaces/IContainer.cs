@@ -10,6 +10,8 @@
 
         void RemoveItem(ISlot slot);
 
+        void RemoveLastItem();
+
         void ListItems();
     }
 }

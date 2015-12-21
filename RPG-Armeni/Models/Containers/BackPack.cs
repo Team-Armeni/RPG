@@ -1,16 +1,16 @@
 ﻿namespace RPGArmeni.Models.Containers
 {
-    using RPGArmeni.Interfaces;
+    using Interfaces;
     using System.Collections.Generic;
     using System.Linq;
     using Exceptions;
-    using RPGArmeni.UI;
+    using UI;
     using System;
 
     public class BackPack : IContainer
     {
         private const int BackPackSlotNumber = 10;
-        private List<ISlot> slotList;
+        private readonly List<ISlot> slotList;
 
         public BackPack()
         {
@@ -45,6 +45,11 @@
             slot.IsEmpty = true;
         }
 
+        public void RemoveLastItem()
+        {
+            this.RemoveLastItemInternal();
+        }
+        
         public void ListItems()
         {
             var fullSlots = this.SlotList.Where(x => !x.IsEmpty);
@@ -57,6 +62,28 @@
             ConsoleRenderer.WriteLine("Empty slots: {0}",
                 this.SlotList.Count() - fullSlots.Count());
             ConsoleRenderer.ResetColor();
+        }
+
+        private void RemoveLastItemInternal()
+        {
+            /* Method which removes the last collected item from the backpack
+            (sets new object at that index) if the player wants to collect another one */
+            int indexOfElemenToRemove = slotList.IndexOf(
+                                        slotList.FirstOrDefault(slot => slot.IsEmpty)) - 1;
+
+            if (indexOfElemenToRemove == -1)
+            {
+                throw new ArgumentException("Invalid operation. Your backpack is empty.");
+            }
+
+            if (indexOfElemenToRemove == -2)
+            {
+                indexOfElemenToRemove = this.slotList.Count - 1; /*last element, because indexOf returns -1, 
+                when it doesn't find element (empty slot) - 1 = -2 */
+            }
+
+            this.slotList.RemoveAt(indexOfElemenToRemove);
+            this.slotList.Insert(indexOfElemenToRemove, new Slot());
         }
     }
 }

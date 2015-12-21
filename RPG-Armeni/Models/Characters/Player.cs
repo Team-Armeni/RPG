@@ -27,7 +27,7 @@
         {
             this.Name = name;
             this.Race = race;
-            this.inventory = new Inventory();
+            this.Inventory = new Inventory();
             this.startHealth = race.Health;
         }
 
