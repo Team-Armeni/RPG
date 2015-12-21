@@ -1,10 +1,9 @@
-﻿using System;
-using RPGArmeni.Interfaces;
-using System.IO;
-using RPGArmeni.UI;
-
-namespace RPGArmeni.Engine.Commands
+﻿namespace RPGArmeni.Engine.Commands
 {
+    using Interfaces;
+    using System.IO;
+    using UI;
+
     public class HelpCommand : GameCommand
     {
         public HelpCommand(IGameEngine engine)

@@ -1,7 +1,7 @@
 ﻿namespace RPGArmeni.Engine.Commands
 {
-    using RPGArmeni.Interfaces;
-    using RPGArmeni.UI;
+    using Interfaces;
+    using UI;
     using System;
     using System.Linq;
 

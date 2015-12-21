@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace RPGArmeni.Engine.Commands
+﻿namespace RPGArmeni.Engine.Commands
 {
-    using RPGArmeni.Interfaces;
+    using Interfaces;
 
 	public abstract class GameCommand : IGameCommand
     {

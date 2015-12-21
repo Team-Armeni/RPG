@@ -1,7 +1,7 @@
 ﻿namespace RPGArmeni.Engine.Commands
 {
-    using RPGArmeni.Engine.Factories;
-    using RPGArmeni.Interfaces;
+    using Factories;
+    using Interfaces;
     using System;
 
     public class SpawnEnemiesCommand : GameCommand

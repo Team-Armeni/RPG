@@ -1,7 +1,7 @@
-﻿using RPGArmeni.Interfaces;
-
-namespace RPGArmeni.Models
+﻿namespace RPGArmeni.Models
 {
+    using Interfaces;
+
     public class Map : IMap
     {
         private int height;

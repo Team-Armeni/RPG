@@ -1,8 +1,8 @@
-﻿using RPGArmeni.Engine.Factories;
-using RPGArmeni.Interfaces;
-
-namespace RPGArmeni.Engine.Commands
+﻿namespace RPGArmeni.Engine.Commands
 {
+    using Factories;
+    using Interfaces;
+
     public class SpawnItemsCommand : GameCommand
     {
         public SpawnItemsCommand(IGameEngine engine)

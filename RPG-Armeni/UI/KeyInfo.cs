@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using RPGArmeni.Interfaces;
-
-namespace RPGArmeni.UI
+﻿namespace RPGArmeni.UI
 {
+    using System;
+    using Interfaces;
+
     public class KeyInfo : IKeyInfo
     {
         private ConsoleKeyInfo keyInfo;

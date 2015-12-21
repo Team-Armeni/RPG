@@ -1,6 +1,7 @@
-﻿using RPGArmeni.Interfaces;
-namespace RPGArmeni
+﻿namespace RPGArmeni
 {
+    using Interfaces;
+
     public struct Position : IPosition
     {
         public Position(int x, int y)

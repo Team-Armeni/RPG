@@ -1,12 +1,8 @@
-﻿using RPGArmeni.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RPGArmeni.Engine.Commands
+﻿namespace RPGArmeni.Engine.Commands
 {
+    using Interfaces;
+    using System;
+
     public class HealCommand : GameCommand
     {
         public HealCommand(IGameEngine engine)

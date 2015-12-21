@@ -1,9 +1,8 @@
-﻿using System;
-using System.Text;
-
-namespace RPGArmeni
+﻿namespace RPGArmeni
 {
-	using Engine;
+    using System;
+    using System.Text;
+    using Engine;
 	using Interfaces;
 	using Engine.Factories;
 

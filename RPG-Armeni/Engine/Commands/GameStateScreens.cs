@@ -1,10 +1,10 @@
-﻿using System;
-using System.IO;
-using RPGArmeni.UI;
-
-namespace RPGArmeni.Engine.Commands
+﻿namespace RPGArmeni.Engine.Commands
 {
-	public static class GameStateScreens
+    using System;
+    using System.IO;
+    using UI;
+
+    public static class GameStateScreens
 	{
 		public static void ShowGameOverScreen()
 		{

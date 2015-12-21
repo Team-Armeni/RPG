@@ -4,10 +4,10 @@
     using System.Collections.Generic;
     using Exceptions;
     using Interfaces;
-    using RPGArmeni.UI;
-    using RPGArmeni.Engine.Factories;
-    using RPGArmeni.Engine.Commands;
-    using RPGArmeni.Models;
+    using UI;
+    using Factories;
+    using Commands;
+    using Models;
 
     public class GameEngine : IGameEngine
     {
