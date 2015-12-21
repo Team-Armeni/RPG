@@ -17,6 +17,7 @@ F1     displays basic game info and commands
 B      displays all items in your backpack
 M      displays the map
 H      heal yourself using a potion
+I      consume a health bonus potion to increase your health permanently, has a healing effect as well
 S      displays player status and enemies left
 C      clears the screen
 Esc    end the game
@@ -29,4 +30,6 @@ E - elf, an enemy character;
 M - human, an enemy character;
 G - goblin, an enemy character - those are easy to defeat, you should probably start with them;
 H - health restore potion;
-B - permanent health bonus potion.
+B - permanent health bonus potion;
+A - axe, gives a damage bonus, when equipped;
+S - sword, gives a damage bonus, when equipped.

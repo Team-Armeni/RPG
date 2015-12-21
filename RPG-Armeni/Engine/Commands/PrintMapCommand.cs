@@ -26,6 +26,7 @@
                     switch (this.Engine.Map.Matrix[i, j])
                     {
 	                    case 'H':
+                        case 'B':
 		                    ConsoleRenderer.ForegroundColor(ConsoleColor.Blue);
 		                    break;
 	                    case 'P':

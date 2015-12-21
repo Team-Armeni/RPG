@@ -167,6 +167,10 @@
                     currentCommand = new HealCommand(this);
                     currentCommand.Execute();
                     break;
+                case ConsoleKey.I: //"get health bonus"
+                    currentCommand = new BoostHealthCommand(this);
+                    currentCommand.Execute();
+                    break;
                 case ConsoleKey.B: //"backpack":
                     currentCommand = new BackPackCommand(this);
                     currentCommand.Execute();

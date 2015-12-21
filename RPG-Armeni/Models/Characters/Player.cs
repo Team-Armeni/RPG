@@ -13,6 +13,7 @@
     {
         private const int PlayerStartingX = 0;
         private const int PlayerStartingY = 0;
+        private int startHealth;
         private string name;
         private int defensiveBonus;
         private IInventory inventory;
@@ -24,6 +25,7 @@
             this.Name = name;
             this.Race = race;
             this.inventory = new Inventory();
+            this.startHealth = race.Health;
         }
 
         public string Name
@@ -140,14 +142,14 @@
             ISlot healthPotionSlot = this.Inventory
                 .BackPack
                 .SlotList
-                .FirstOrDefault(x => x.GameItem is HealthPotion || x.GameItem is HealthBonusPotion);
+                .FirstOrDefault(x => x.GameItem is HealthPotion);
 
             if (healthPotionSlot == null)
             {
                 throw new NoHealthPotionsException("There are no health potions left in the backpack.");
             }
             
-            int maximumHealthRestore = this.Health;
+            int maximumHealthRestore = this.startHealth;
             this.Health += (healthPotionSlot.GameItem as HealthPotion).HealthRestore;
             ConsoleRenderer.WriteLine("You restored {0} health points using Health Potion!", 
                 (healthPotionSlot.GameItem as HealthPotion).HealthRestore);
@@ -160,16 +162,20 @@
 
         public void DrinkHealthBonusPotion()
         {
-            ISlot healthPotionSlot = this.Inventory.BackPack
+            ISlot healthBonusPotionSlot = this.Inventory
+                .BackPack
                 .SlotList
-                .FirstOrDefault(x => x is HealthBonusPotion);
+                .FirstOrDefault(x => x.GameItem is HealthBonusPotion);
 
-            if (healthPotionSlot == null)
+            if (healthBonusPotionSlot == null)
             {
-                throw new NoHealthPotionsException("There are no health potions left in the backpack.");
+                throw new NoHealthBonusPotionsException("There are no health bonus potions left in the backpack.");
             }
-            this.Health += (healthPotionSlot.GameItem as HealthBonusPotion).HealthBonus;
-            this.Inventory.BackPack.RemoveItem(healthPotionSlot);
+            this.Health += (healthBonusPotionSlot.GameItem as HealthBonusPotion).HealthBonus;
+            ConsoleRenderer.WriteLine("You boosted your health with {0} points using Health Bonus Potion!",
+                (healthBonusPotionSlot.GameItem as HealthBonusPotion).HealthBonus);
+            this.startHealth += (healthBonusPotionSlot.GameItem as HealthBonusPotion).HealthBonus; 
+            this.Inventory.BackPack.RemoveItem(healthBonusPotionSlot);
         }
 
         public override string ToString()

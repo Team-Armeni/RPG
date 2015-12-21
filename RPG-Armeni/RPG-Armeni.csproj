@@ -46,6 +46,7 @@
     <Compile Include="Attributes\RaceAttribute.cs" />
     <Compile Include="Attributes\WeaponAttribute.cs" />
     <Compile Include="Engine\Commands\BackPackCommand.cs" />
+    <Compile Include="Engine\Commands\BoostHealthCommand.cs" />
     <Compile Include="Engine\Commands\GameCommand.cs" />
     <Compile Include="Engine\Commands\GameStateScreens.cs" />
     <Compile Include="Engine\Commands\HealCommand.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Exceptions\BackPackFullException.cs" />
     <Compile Include="Exceptions\InvalidHealthException.cs" />
     <Compile Include="Exceptions\InvalidNameException.cs" />
+    <Compile Include="Exceptions\NoHealthBonusPotionsException.cs" />
     <Compile Include="Exceptions\NoHealthPotionsException.cs" />
     <Compile Include="Exceptions\NoSlotAvailableException.cs" />
     <Compile Include="Interfaces\IArmor.cs" />

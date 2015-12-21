@@ -11,5 +11,7 @@
         IGameEngine Engine { get; set; }
 
         void SelfHeal();
+        
+        void DrinkHealthBonusPotion();
     }
 }
