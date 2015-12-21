@@ -5,7 +5,7 @@
     [Enemy]
     public class EnemyHuman : Character
     {
-        private const int EnemyHumanDamage = 12;
+        private const int EnemyHumanDamage = 15;
         private const int EnemyHumanHealth = 80;
         private const char EnemyHumanSymbol = 'M';
 

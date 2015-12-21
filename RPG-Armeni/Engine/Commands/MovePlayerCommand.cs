@@ -65,7 +65,7 @@ namespace RPGArmeni.Engine.Commands
 				if (currentEnemy.Health <= 0)
 				{
 					ConsoleRenderer.WriteLine("Enemy killed!");
-					ConsoleRenderer.WriteLine($"Health Remaining: {this.Engine.Player.Health}");
+                    ConsoleRenderer.WriteLine("Health Remaining: {0}", this.Engine.Player.Health);
 					this.Engine.RemoveEnemy(currentEnemy);
 					return;
 				}

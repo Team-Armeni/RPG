@@ -13,6 +13,8 @@
     {
         public const int MapHeight = 20;
         public const int MapWidth = 50;
+        private const int DefaultNumberOfEnemies = 20;
+        private const int DefaultNumberOfItems = 20;
 
         private int numberOfEnemies;
         private int numberOfItems;
@@ -28,8 +30,8 @@
             this.items = new List<IGameItem>();
             this.Map = new Map(MapHeight, MapWidth);
             this.InitializeMap();
-            this.NumberOfEnemies = 20;
-            this.NumberOfItems = 20;
+            this.NumberOfEnemies = DefaultNumberOfEnemies;
+            this.NumberOfItems = DefaultNumberOfItems;
         }
 
         public IEnumerable<IGameObject> Characters

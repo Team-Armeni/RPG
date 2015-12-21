@@ -76,6 +76,31 @@
                 this.Engine.Map.Matrix[currentX, currentY] = currentItem.ObjectSymbol;
                 return currentItem;
             }
+            else if (currentType.Name == "HealthBonusPotion")
+            {
+                int potionType = RandomGenerator.GenerateNumber(0, 3);
+
+                HealthBonusPotionSize potionSize;
+
+                switch (potionType)
+                {
+                    case 0:
+                        potionSize = HealthBonusPotionSize.Minor;
+                        break;
+                    case 1:
+                        potionSize = HealthBonusPotionSize.Normal;
+                        break;
+                    case 2:
+                        potionSize = HealthBonusPotionSize.Major;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException("Invalid potion type.");
+                }
+
+                currentItem = new HealthBonusPotion(new Position(currentX, currentY), potionSize);
+                this.Engine.Map.Matrix[currentX, currentY] = currentItem.ObjectSymbol;
+                return currentItem;
+            }
             currentItem = Activator.CreateInstance(currentType, new Position(currentX, currentY)) as IGameItem;
             this.Engine.Map.Matrix[currentX, currentY] = currentItem.ObjectSymbol;
 

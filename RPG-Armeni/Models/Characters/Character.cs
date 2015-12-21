@@ -44,6 +44,10 @@
         public void Attack(ICharacter enemy)
         {
             enemy.Health -= this.Damage;
+            if (enemy is IPlayer)
+            {
+                enemy.Health += (enemy as IPlayer).DefensiveBonus;
+            }
         }
 
         private int ValidateHealth(int health)
